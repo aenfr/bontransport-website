@@ -210,54 +210,108 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 140px;
+      height: 160px;
       pointer-events: none;
       overflow: hidden;
       z-index: 1;
     }
+    /* Ground fade to give depth */
+    .truck-road::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, transparent 60%, rgba(7,26,51,0.6) 100%);
+    }
     .road-surface {
       position: absolute;
-      bottom: 0;
+      bottom: 16px;
       left: 0;
       right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(62,124,177,0.4), rgba(232,93,38,0.6), rgba(62,124,177,0.4), transparent);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0.15) 80%, transparent);
     }
     .road-dashes {
       position: absolute;
-      bottom: 24px;
+      bottom: 8px;
       left: 0;
       right: 0;
       height: 2px;
-      background-image: linear-gradient(90deg, rgba(255,255,255,0.25) 50%, transparent 50%);
-      background-size: 48px 2px;
-      animation: roadDash 2.5s linear infinite;
+      background-image: linear-gradient(90deg, rgba(255,220,120,0.5) 50%, transparent 50%);
+      background-size: 60px 2px;
+      animation: roadDash 1.8s linear infinite;
+      mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
     }
     @keyframes roadDash {
       0% { background-position: 0 0; }
-      100% { background-position: -48px 0; }
+      100% { background-position: -60px 0; }
     }
-    .driving-truck {
+
+    /* Truck wrapper handles horizontal motion */
+    .truck-wrap {
       position: absolute;
-      bottom: 30px;
-      left: -200px;
-      width: 180px;
-      animation: drive 18s linear infinite;
-      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
+      bottom: 20px;
+      left: -240px;
+      width: 220px;
+      height: 100px;
+      animation: drive 22s linear infinite;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.45));
     }
-    .driving-truck .wheel {
-      animation: spin 0.4s linear infinite;
-      transform-origin: center;
+    /* Inner element for subtle vertical bounce */
+    .truck-bounce {
+      width: 100%;
+      height: 100%;
+      animation: truckBounce 0.45s ease-in-out infinite;
     }
     @keyframes drive {
       0% { transform: translateX(0); }
-      45% { transform: translateX(60vw) translateY(0); }
-      50% { transform: translateX(65vw) translateY(-3px); }
-      55% { transform: translateX(70vw) translateY(0); }
-      100% { transform: translateX(calc(100vw + 200px)); }
+      100% { transform: translateX(calc(100vw + 240px)); }
+    }
+    @keyframes truckBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-1.5px); }
+    }
+    .driving-truck {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .driving-truck .wheel {
+      animation: spin 0.3s linear infinite;
+      transform-box: fill-box;
+      transform-origin: center;
     }
     @keyframes spin {
       to { transform: rotate(360deg); }
+    }
+    /* Exhaust puffs */
+    .exhaust {
+      position: absolute;
+      top: 10px;
+      left: 148px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,210,220,0.7), rgba(200,210,220,0));
+      animation: puff 1.6s ease-out infinite;
+      opacity: 0;
+    }
+    .exhaust.e2 { animation-delay: 0.4s; }
+    .exhaust.e3 { animation-delay: 0.8s; }
+    .exhaust.e4 { animation-delay: 1.2s; }
+    @keyframes puff {
+      0% { transform: translate(0, 0) scale(0.4); opacity: 0.7; }
+      100% { transform: translate(-30px, -28px) scale(2.2); opacity: 0; }
+    }
+    /* Headlight glow cast on road */
+    .headlight-glow {
+      position: absolute;
+      top: 58px;
+      left: 198px;
+      width: 60px;
+      height: 20px;
+      background: radial-gradient(ellipse at left center, rgba(255,240,180,0.35), transparent 70%);
+      filter: blur(4px);
     }
 
     /* ===== Live GPS pulse ===== */
@@ -450,44 +504,131 @@
     <div class="truck-road" aria-hidden="true">
       <div class="road-surface"></div>
       <div class="road-dashes"></div>
-      <svg class="driving-truck" viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg">
-        <!-- Trailer -->
-        <rect x="10" y="20" width="110" height="50" rx="3" fill="#FFFFFF" stroke="#0B2545" stroke-width="1.5"/>
-        <rect x="16" y="26" width="98" height="38" rx="2" fill="#F7F8FA"/>
-        <!-- Brand panel on trailer -->
-        <rect x="22" y="34" width="86" height="22" rx="1" fill="#0B2545"/>
-        <text x="65" y="49" text-anchor="middle" fill="#FFFFFF" font-family="Montserrat, sans-serif" font-weight="800" font-size="11">
-          <tspan fill="#E85D26">BON</tspan>TRANSPORT
-        </text>
-        <!-- Cab -->
-        <path d="M120,70 L120,30 Q120,22 128,22 L160,22 Q168,22 170,30 L180,50 L180,70 Z" fill="#E85D26"/>
-        <!-- Window -->
-        <path d="M128,30 L158,30 L168,48 L128,48 Z" fill="#3E7CB1" opacity="0.8"/>
-        <path d="M128,30 L158,30 L168,48 L128,48 Z" fill="none" stroke="#0B2545" stroke-width="1"/>
-        <!-- Headlight -->
-        <circle cx="177" cy="54" r="2.5" fill="#FFF8DC"/>
-        <!-- Cab body outline -->
-        <path d="M120,70 L120,30 Q120,22 128,22 L160,22 Q168,22 170,30 L180,50 L180,70" fill="none" stroke="#0B2545" stroke-width="1.5"/>
-        <!-- Wheels -->
-        <g class="wheel" style="transform-origin: 35px 72px;">
-          <circle cx="35" cy="72" r="8" fill="#1B1B1E"/>
-          <circle cx="35" cy="72" r="4" fill="#4A5568"/>
-          <rect x="34" y="64" width="2" height="16" fill="#F7F8FA"/>
-          <rect x="27" y="71" width="16" height="2" fill="#F7F8FA"/>
-        </g>
-        <g class="wheel" style="transform-origin: 65px 72px;">
-          <circle cx="65" cy="72" r="8" fill="#1B1B1E"/>
-          <circle cx="65" cy="72" r="4" fill="#4A5568"/>
-          <rect x="64" y="64" width="2" height="16" fill="#F7F8FA"/>
-          <rect x="57" y="71" width="16" height="2" fill="#F7F8FA"/>
-        </g>
-        <g class="wheel" style="transform-origin: 150px 72px;">
-          <circle cx="150" cy="72" r="8" fill="#1B1B1E"/>
-          <circle cx="150" cy="72" r="4" fill="#4A5568"/>
-          <rect x="149" y="64" width="2" height="16" fill="#F7F8FA"/>
-          <rect x="142" y="71" width="16" height="2" fill="#F7F8FA"/>
-        </g>
-      </svg>
+      <div class="truck-wrap">
+        <div class="truck-bounce">
+          <span class="exhaust"></span>
+          <span class="exhaust e2"></span>
+          <span class="exhaust e3"></span>
+          <span class="exhaust e4"></span>
+          <div class="headlight-glow"></div>
+          <svg class="driving-truck" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- Ground shadow -->
+            <ellipse cx="110" cy="92" rx="100" ry="3" fill="#000" opacity="0.35"/>
+
+            <!-- ========= TRAILER (box) ========= -->
+            <!-- Main trailer box -->
+            <rect x="2" y="22" width="130" height="54" rx="2" fill="#F7F8FA" stroke="#0B2545" stroke-width="0.8"/>
+            <!-- Top rail -->
+            <rect x="2" y="22" width="130" height="4" fill="#0B2545"/>
+            <!-- Bottom rail / skirt -->
+            <rect x="2" y="72" width="130" height="4" fill="#0B2545"/>
+            <!-- Door split on rear -->
+            <line x1="4" y1="26" x2="4" y2="72" stroke="#CBD5E0" stroke-width="0.6"/>
+            <line x1="8" y1="26" x2="8" y2="72" stroke="#CBD5E0" stroke-width="0.4"/>
+            <!-- Rear door handles -->
+            <rect x="3" y="42" width="1.5" height="14" fill="#4A5568"/>
+            <rect x="3" y="58" width="1.5" height="8" fill="#4A5568"/>
+            <!-- Panel lines -->
+            <line x1="42" y1="26" x2="42" y2="72" stroke="#E2E8F0" stroke-width="0.4"/>
+            <line x1="82" y1="26" x2="82" y2="72" stroke="#E2E8F0" stroke-width="0.4"/>
+            <line x1="122" y1="26" x2="122" y2="72" stroke="#E2E8F0" stroke-width="0.4"/>
+            <!-- Brand panel -->
+            <rect x="14" y="36" width="108" height="24" rx="1" fill="#0B2545"/>
+            <rect x="14" y="36" width="108" height="3" fill="#E85D26"/>
+            <text x="68" y="54" text-anchor="middle" fill="#FFFFFF" font-family="Montserrat, sans-serif" font-weight="800" font-size="13" letter-spacing="0.5">
+              <tspan fill="#E85D26">BON</tspan>TRANSPORT
+            </text>
+            <!-- Mud flap behind trailer wheels -->
+            <rect x="46" y="76" width="4" height="10" fill="#1B1B1E"/>
+            <rect x="76" y="76" width="4" height="10" fill="#1B1B1E"/>
+
+            <!-- ========= CAB (tractor) ========= -->
+            <!-- Chassis connector -->
+            <rect x="132" y="68" width="10" height="6" fill="#1B1B1E"/>
+            <!-- Fuel tank under cab -->
+            <rect x="142" y="64" width="24" height="10" rx="2" fill="#4A5568" stroke="#0B2545" stroke-width="0.5"/>
+            <!-- Cab main body -->
+            <path d="M142,76 L142,46 Q142,30 154,30 L192,30 Q204,30 208,40 L218,58 L218,76 Z" fill="#E85D26" stroke="#0B2545" stroke-width="0.8"/>
+            <!-- Cab roof highlight -->
+            <path d="M142,46 Q142,32 154,32 L190,32 Q200,32 204,40" fill="none" stroke="#FFA366" stroke-width="1" opacity="0.6"/>
+            <!-- Windshield (sloped) -->
+            <path d="M154,36 L188,36 Q194,36 197,42 L204,54 L154,54 Z" fill="#1A3A5C"/>
+            <path d="M154,36 L188,36 Q194,36 197,42 L204,54 L154,54 Z" fill="url(#windshieldGrad)" opacity="0.9"/>
+            <defs>
+              <linearGradient id="windshieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6FA8D6"/>
+                <stop offset="50%" stop-color="#3E7CB1"/>
+                <stop offset="100%" stop-color="#1A3A5C"/>
+              </linearGradient>
+            </defs>
+            <!-- Windshield frame -->
+            <path d="M154,36 L188,36 Q194,36 197,42 L204,54 L154,54 Z" fill="none" stroke="#0B2545" stroke-width="0.8"/>
+            <!-- Windshield wiper -->
+            <line x1="162" y1="52" x2="172" y2="42" stroke="#1B1B1E" stroke-width="0.6"/>
+            <!-- Side door -->
+            <rect x="144" y="56" width="10" height="18" fill="#D04D1A" stroke="#0B2545" stroke-width="0.4"/>
+            <circle cx="151" cy="65" r="0.6" fill="#0B2545"/>
+            <!-- Side mirror -->
+            <rect x="150" y="38" width="3" height="8" fill="#0B2545"/>
+            <rect x="148" y="40" width="2" height="5" fill="#1B1B1E"/>
+            <!-- Grille -->
+            <rect x="210" y="62" width="8" height="10" fill="#1B1B1E"/>
+            <line x1="210" y1="64" x2="218" y2="64" stroke="#4A5568" stroke-width="0.3"/>
+            <line x1="210" y1="66" x2="218" y2="66" stroke="#4A5568" stroke-width="0.3"/>
+            <line x1="210" y1="68" x2="218" y2="68" stroke="#4A5568" stroke-width="0.3"/>
+            <line x1="210" y1="70" x2="218" y2="70" stroke="#4A5568" stroke-width="0.3"/>
+            <!-- Headlights -->
+            <rect x="214" y="58" width="4" height="4" rx="0.5" fill="#FFF8DC" stroke="#0B2545" stroke-width="0.4"/>
+            <circle cx="216" cy="60" r="1.2" fill="#FFFBE6"/>
+            <!-- Front bumper -->
+            <rect x="208" y="72" width="10" height="4" fill="#1B1B1E"/>
+            <!-- Exhaust stack -->
+            <rect x="148" y="14" width="3" height="18" fill="#4A5568"/>
+            <rect x="147" y="12" width="5" height="3" rx="0.5" fill="#1B1B1E"/>
+
+            <!-- ========= WHEELS ========= -->
+            <!-- Trailer wheels (dual axle) -->
+            <g class="wheel">
+              <circle cx="36" cy="82" r="9" fill="#1B1B1E"/>
+              <circle cx="36" cy="82" r="5" fill="#2D3748"/>
+              <circle cx="36" cy="82" r="2" fill="#4A5568"/>
+              <rect x="35" y="73" width="2" height="18" fill="#718096"/>
+              <rect x="27" y="81" width="18" height="2" fill="#718096"/>
+              <line x1="30" y1="76" x2="42" y2="88" stroke="#718096" stroke-width="1"/>
+              <line x1="42" y1="76" x2="30" y2="88" stroke="#718096" stroke-width="1"/>
+            </g>
+            <g class="wheel">
+              <circle cx="66" cy="82" r="9" fill="#1B1B1E"/>
+              <circle cx="66" cy="82" r="5" fill="#2D3748"/>
+              <circle cx="66" cy="82" r="2" fill="#4A5568"/>
+              <rect x="65" y="73" width="2" height="18" fill="#718096"/>
+              <rect x="57" y="81" width="18" height="2" fill="#718096"/>
+              <line x1="60" y1="76" x2="72" y2="88" stroke="#718096" stroke-width="1"/>
+              <line x1="72" y1="76" x2="60" y2="88" stroke="#718096" stroke-width="1"/>
+            </g>
+            <!-- Rear cab wheel -->
+            <g class="wheel">
+              <circle cx="160" cy="82" r="9" fill="#1B1B1E"/>
+              <circle cx="160" cy="82" r="5" fill="#2D3748"/>
+              <circle cx="160" cy="82" r="2" fill="#4A5568"/>
+              <rect x="159" y="73" width="2" height="18" fill="#718096"/>
+              <rect x="151" y="81" width="18" height="2" fill="#718096"/>
+              <line x1="154" y1="76" x2="166" y2="88" stroke="#718096" stroke-width="1"/>
+              <line x1="166" y1="76" x2="154" y2="88" stroke="#718096" stroke-width="1"/>
+            </g>
+            <!-- Front cab wheel -->
+            <g class="wheel">
+              <circle cx="200" cy="82" r="9" fill="#1B1B1E"/>
+              <circle cx="200" cy="82" r="5" fill="#2D3748"/>
+              <circle cx="200" cy="82" r="2" fill="#4A5568"/>
+              <rect x="199" y="73" width="2" height="18" fill="#718096"/>
+              <rect x="191" y="81" width="18" height="2" fill="#718096"/>
+              <line x1="194" y1="76" x2="206" y2="88" stroke="#718096" stroke-width="1"/>
+              <line x1="206" y1="76" x2="194" y2="88" stroke="#718096" stroke-width="1"/>
+            </g>
+          </svg>
+        </div>
+      </div>
     </div>
 
     <!-- Scroll indicator -->
