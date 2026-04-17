@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bontransport S.L. - Transporte internacional desde Valencia</title>
+  <meta name="description" content="Empresa familiar valenciana de transporte internacional. Mercancias por toda Europa y Suiza con puntualidad, seguro hasta 300.000EUR y GPS en tiempo real.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/logo.perfect.png">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#1e3a8a',
+            'brand-dark': '#172554',
+            'brand-light': '#3b82f6',
+            'brand-accent': '#60a5fa',
+            'ink': '#0f172a',
+            'bone': '#f8fafc',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+
+    /* Ken Burns effect on hero image */
+    .ken-burns {
+      animation: kenBurns 20s ease-in-out infinite alternate;
+    }
+    @keyframes kenBurns {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.08) translate(-1%, -1%); }
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d-1 { transition-delay: 0.1s; }
+    .d-2 { transition-delay: 0.2s; }
+    .d-3 { transition-delay: 0.3s; }
+
+    /* Marquee */
+    .marquee {
+      display: flex;
+      gap: 4rem;
+      animation: scroll 40s linear infinite;
+      white-space: nowrap;
+    }
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* Card tilt effect */
+    .tilt {
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+    }
+    .tilt:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -12px rgba(30, 58, 138, 0.25);
+    }
+
+    /* Image hover zoom */
+    .zoom-wrap { overflow: hidden; border-radius: 0.75rem; }
+    .zoom-img {
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .zoom-wrap:hover .zoom-img { transform: scale(1.05); }
+
+    /* Nav blur effect */
+    .nav-scrolled {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Hero gradient overlay */
+    .hero-overlay {
+      background: linear-gradient(180deg,
+        rgba(23, 37, 84, 0.55) 0%,
+        rgba(23, 37, 84, 0.35) 40%,
+        rgba(23, 37, 84, 0.85) 100%);
+    }
+
+    /* Accent underline */
+    .accent-line::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: #3b82f6;
+      margin-top: 0.5rem;
+      border-radius: 2px;
+    }
+
+    /* Counter */
+    .counter { font-variant-numeric: tabular-nums; }
+
+    /* Pulse dot */
+    .dot-pulse {
+      position: relative;
+    }
+    .dot-pulse::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: pulseDot 2s ease-out infinite;
+    }
+    @keyframes pulseDot {
+      0% { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(2.5); opacity: 0; }
+    }
+
+    /* Timeline dot */
+    .milestone-dot {
+      transition: all 0.3s ease;
+    }
+    .milestone-dot.active {
+      box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.2);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ken-burns, .marquee, .dot-pulse::after { animation: none !important; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .mobile-menu.open { transform: translateX(0); }
+  </style>
+</head>
+<body class="bg-bone">
+
+  <!-- ============ NAV ============ -->
+  <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="#top" class="flex items-center gap-3 cursor-pointer">
+          <img src="images/logo.perfect.png" alt="Bontransport" class="h-8 sm:h-10 brightness-0 invert nav-logo transition-all">
+        </a>
+
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="#servicios" class="nav-link font-medium text-sm text-white hover:text-brand-accent transition-colors cursor-pointer">Servicios</a>
+          <a href="#flota" class="nav-link font-medium text-sm text-white hover:text-brand-accent transition-colors cursor-pointer">Flota</a>
+          <a href="#trabajos" class="nav-link font-medium text-sm text-white hover:text-brand-accent transition-colors cursor-pointer">Trabajos</a>
+          <a href="#historia" class="nav-link font-medium text-sm text-white hover:text-brand-accent transition-colors cursor-pointer">Historia</a>
+          <a href="#contacto" class="nav-link font-medium text-sm text-white hover:text-brand-accent transition-colors cursor-pointer">Contacto</a>
+          <div class="flex items-center gap-2 ml-4">
+            <button class="lang-btn font-semibold text-xs text-white hover:text-brand-accent cursor-pointer" data-lang="es">ES</button>
+            <span class="text-white/30">|</span>
+            <button class="lang-btn font-semibold text-xs text-white/50 hover:text-brand-accent cursor-pointer" data-lang="en">EN</button>
+            <span class="text-white/30">|</span>
+            <button class="lang-btn font-semibold text-xs text-white/50 hover:text-brand-accent cursor-pointer" data-lang="fr">FR</button>
+          </div>
+          <a href="#contacto" class="bg-brand-light hover:bg-brand text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors cursor-pointer">Presupuesto</a>
+        </div>
+
+        <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center cursor-pointer nav-hamburger text-white" aria-label="Menu">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu drawer -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-full bg-brand-dark z-50 shadow-2xl p-8 flex flex-col gap-5 lg:hidden">
+      <button id="closeMenu" class="self-end w-10 h-10 flex items-center justify-center text-white cursor-pointer" aria-label="Cerrar">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <a href="#servicios" class="mobile-link text-white font-medium text-lg hover:text-brand-accent cursor-pointer">Servicios</a>
+      <a href="#flota" class="mobile-link text-white font-medium text-lg hover:text-brand-accent cursor-pointer">Flota</a>
+      <a href="#trabajos" class="mobile-link text-white font-medium text-lg hover:text-brand-accent cursor-pointer">Trabajos</a>
+      <a href="#historia" class="mobile-link text-white font-medium text-lg hover:text-brand-accent cursor-pointer">Historia</a>
+      <a href="#contacto" class="mobile-link text-white font-medium text-lg hover:text-brand-accent cursor-pointer">Contacto</a>
+      <a href="#contacto" class="mt-4 bg-brand-light hover:bg-brand-accent text-white font-semibold text-center py-3 rounded-lg cursor-pointer">Presupuesto</a>
+    </div>
+  </nav>
+
+
+  <!-- ============ HERO ============ -->
+  <section id="top" class="relative h-screen min-h-[640px] flex items-end overflow-hidden bg-ink">
+    <!-- Hero image with ken-burns -->
+    <div class="absolute inset-0 ken-burns">
+      <img src="images/CARGAR-2.jpeg" alt="Camion Bontransport cargando" class="w-full h-full object-cover">
+    </div>
+    <!-- Overlay -->
+    <div class="absolute inset-0 hero-overlay"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 sm:pb-24">
+      <div class="reveal inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-6">
+        <span class="w-2 h-2 bg-green-400 rounded-full"></span>
+        <span class="text-sm text-white font-medium">Desde Corbera, Valencia &bull; Toda Europa</span>
+      </div>
+      <h1 class="reveal d-1 font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white tracking-tight leading-[1.05] max-w-4xl">
+        Transporte internacional<br>
+        <span class="text-brand-accent">con el compromiso</span> de una<br>
+        empresa familiar.
+      </h1>
+      <p class="reveal d-2 mt-6 text-lg sm:text-xl text-white/80 max-w-2xl leading-relaxed">
+        Llevamos tu mercanc&iacute;a a cualquier punto de Europa y Suiza con la puntualidad, seguridad y experiencia que nos avalan desde los a&ntilde;os 60.
+      </p>
+      <div class="reveal d-3 mt-8 flex flex-wrap gap-3">
+        <a href="#contacto" class="bg-brand-light hover:bg-brand-accent text-white font-semibold px-7 py-3.5 rounded-lg transition-colors cursor-pointer shadow-lg shadow-brand-dark/30">
+          Solicitar presupuesto
+        </a>
+        <a href="tel:+34962978340" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-medium px-7 py-3.5 rounded-lg transition-colors cursor-pointer">
+          962 97 83 40
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 hidden sm:block">
+      <svg class="w-5 h-5 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+      </svg>
+    </div>
+  </section>
+
+
+  <!-- ============ STATS ============ -->
+  <section class="bg-white border-b border-slate-100 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-slate-100">
+        <div class="reveal py-8 px-4 text-center">
+          <div class="font-black text-3xl sm:text-4xl text-brand counter" data-target="60" data-suffix="+">0</div>
+          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">a&ntilde;os en ruta</div>
+        </div>
+        <div class="reveal d-1 py-8 px-4 text-center">
+          <div class="font-black text-3xl sm:text-4xl text-brand counter" data-target="300" data-suffix="K&euro;">0</div>
+          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">seguro mercanc&iacute;as</div>
+        </div>
+        <div class="reveal d-2 py-8 px-4 text-center">
+          <div class="font-black text-3xl sm:text-4xl text-brand">24/7</div>
+          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">GPS en tiempo real</div>
+        </div>
+        <div class="reveal d-3 py-8 px-4 text-center">
+          <div class="font-black text-3xl sm:text-4xl text-brand counter" data-target="30" data-suffix="+">0</div>
+          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">pa&iacute;ses cubiertos</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ COUNTRY MARQUEE ============ -->
+  <section class="bg-slate-50 py-6 overflow-hidden border-b border-slate-100">
+    <div class="marquee text-slate-400 text-sm font-semibold uppercase tracking-wider">
+      <div class="flex items-center gap-16 px-8">
+        <span>Espana</span><span>&bull;</span><span>Francia</span><span>&bull;</span><span>Alemania</span><span>&bull;</span><span>Italia</span><span>&bull;</span><span>Suiza</span><span>&bull;</span><span>Belgica</span><span>&bull;</span><span>Paises Bajos</span><span>&bull;</span><span>Austria</span><span>&bull;</span><span>Portugal</span><span>&bull;</span><span>Polonia</span>
+      </div>
+      <div class="flex items-center gap-16 px-8" aria-hidden="true">
+        <span>Espana</span><span>&bull;</span><span>Francia</span><span>&bull;</span><span>Alemania</span><span>&bull;</span><span>Italia</span><span>&bull;</span><span>Suiza</span><span>&bull;</span><span>Belgica</span><span>&bull;</span><span>Paises Bajos</span><span>&bull;</span><span>Austria</span><span>&bull;</span><span>Portugal</span><span>&bull;</span><span>Polonia</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ MISSION ============ -->
+  <section id="servicios" class="py-20 sm:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-5 reveal">
+          <span class="text-brand-light font-semibold text-sm uppercase tracking-widest accent-line">Nuestra misi&oacute;n</span>
+          <h2 class="mt-5 font-black text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight">
+            Que los camiones lleguen <span class="text-brand">puntuales a todos los destinos</span>.
+          </h2>
+          <p class="mt-5 text-lg text-slate-600 leading-relaxed">
+            Somos una empresa comprometida con la puntualidad, la seguridad de tu carga y la evoluci&oacute;n tecnol&oacute;gica de nuestra flota. Tres pilares que hemos cultivado desde los a&ntilde;os 60.
+          </p>
+        </div>
+
+        <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+          <div class="reveal tilt bg-gradient-to-br from-brand to-brand-dark text-white p-7 rounded-2xl cursor-pointer">
+            <div class="w-11 h-11 bg-white/10 rounded-lg flex items-center justify-center mb-5">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="font-bold text-lg">Puntualidad</h3>
+            <p class="mt-2 text-white/70 text-sm leading-relaxed">Nuestros camiones llegan puntuales a todos los destinos. Lo hemos hecho siempre. Lo seguiremos haciendo.</p>
+          </div>
+
+          <div class="reveal d-1 tilt bg-white border border-slate-200 p-7 rounded-2xl cursor-pointer">
+            <div class="w-11 h-11 bg-brand/5 rounded-lg flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <h3 class="font-bold text-lg text-ink">Seguro</h3>
+            <p class="mt-2 text-slate-600 text-sm leading-relaxed">Seguro de mercanc&iacute;as de hasta <b>300.000&euro;</b> y seguro de responsabilidad civil de hasta <b>600.000&euro;</b>.</p>
+          </div>
+
+          <div class="reveal d-2 tilt bg-white border border-slate-200 p-7 rounded-2xl cursor-pointer sm:col-span-2">
+            <div class="flex items-start gap-5">
+              <div class="w-11 h-11 bg-brand/5 rounded-lg flex-shrink-0 flex items-center justify-center">
+                <svg class="w-6 h-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg text-ink">Equipamiento</h3>
+                <p class="mt-2 text-slate-600 text-sm leading-relaxed">Nuestra flota de veh&iacute;culos va equipada con las mejores y m&aacute;s modernas tecnolog&iacute;as. Posicionador GPS con acceso online para el cliente, informes de ruta detallados y veh&iacute;culos articulados de &uacute;ltima generaci&oacute;n.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ FLEET (with real photo) ============ -->
+  <section id="flota" class="py-20 sm:py-28 bg-ink relative overflow-hidden">
+    <!-- Subtle grid bg -->
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal order-2 lg:order-1">
+          <div class="zoom-wrap relative">
+            <img src="images/OCTUBRE-copia.jpeg" alt="Camion DAF Bontransport con carga de placas metalicas" class="zoom-img w-full h-full object-cover aspect-[4/3]">
+            <!-- Floating GPS badge -->
+            <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-lg px-4 py-3 shadow-xl flex items-center gap-3">
+              <div class="relative w-3 h-3">
+                <div class="dot-pulse w-3 h-3 bg-green-500 rounded-full"></div>
+              </div>
+              <div>
+                <div class="text-xs font-bold text-ink">En ruta</div>
+                <div class="text-[10px] text-slate-500">Valencia &rarr; Mun&iacute;ch</div>
+              </div>
+            </div>
+            <!-- Floating stats badge -->
+            <div class="absolute bottom-4 right-4 bg-brand text-white rounded-lg px-4 py-3 shadow-xl">
+              <div class="text-2xl font-black counter" data-target="1847" data-suffix="">0</div>
+              <div class="text-[10px] uppercase tracking-wider text-white/70">km recorridos hoy</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal d-1 order-1 lg:order-2">
+          <span class="text-brand-accent font-semibold text-sm uppercase tracking-widest accent-line">Nuestra flota</span>
+          <h2 class="mt-5 font-black text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+            Camiones DAF equipados con <span class="text-brand-accent">tecnolog&iacute;a de &uacute;ltima generaci&oacute;n</span>.
+          </h2>
+          <p class="mt-5 text-lg text-white/70 leading-relaxed">
+            Cada veh&iacute;culo de nuestra flota est&aacute; equipado con posicionador GPS para que puedas visualizar online, en todo momento, la ruta por la cual viaja tu mercanc&iacute;a.
+          </p>
+
+          <div class="mt-8 grid grid-cols-2 gap-4">
+            <div class="border-l-2 border-brand-light pl-4">
+              <div class="text-white font-bold text-lg">GPS en vivo</div>
+              <div class="text-white/50 text-sm mt-0.5">Acceso online 24/7</div>
+            </div>
+            <div class="border-l-2 border-brand-light pl-4">
+              <div class="text-white font-bold text-lg">Informes de ruta</div>
+              <div class="text-white/50 text-sm mt-0.5">D&oacute;nde, cu&aacute;ndo, c&oacute;mo</div>
+            </div>
+            <div class="border-l-2 border-brand-light pl-4">
+              <div class="text-white font-bold text-lg">Veh&iacute;culos articulados</div>
+              <div class="text-white/50 text-sm mt-0.5">&Uacute;ltima generaci&oacute;n</div>
+            </div>
+            <div class="border-l-2 border-brand-light pl-4">
+              <div class="text-white font-bold text-lg">Doble seguro</div>
+              <div class="text-white/50 text-sm mt-0.5">300K&euro; + 600K&euro;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ SERVICES (Logistica cards) ============ -->
+  <section class="py-20 sm:py-28 bg-bone">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-14">
+        <span class="text-brand-light font-semibold text-sm uppercase tracking-widest accent-line reveal">Log&iacute;stica integral</span>
+        <h2 class="reveal d-1 mt-5 font-black text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight">
+          Todo lo que necesitas, bajo un solo techo.
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="reveal tilt bg-white border border-slate-200 p-7 rounded-2xl cursor-pointer">
+          <div class="w-11 h-11 bg-brand/5 rounded-lg flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          </div>
+          <h3 class="font-bold text-lg text-ink">Recogida y reparto</h3>
+          <p class="mt-2 text-slate-600 text-sm">Recogemos y trasladamos las cargas de forma &aacute;gil y segura.</p>
+        </div>
+
+        <div class="reveal d-1 tilt bg-white border border-slate-200 p-7 rounded-2xl cursor-pointer">
+          <div class="w-11 h-11 bg-brand/5 rounded-lg flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <h3 class="font-bold text-lg text-ink">Calidad garantizada</h3>
+          <p class="mt-2 text-slate-600 text-sm">Garantizamos una alta calidad en el cuidado de la carga.</p>
+        </div>
+
+        <div class="reveal d-2 tilt bg-white border border-slate-200 p-7 rounded-2xl cursor-pointer">
+          <div class="w-11 h-11 bg-brand/5 rounded-lg flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m-12 5h12m-12 5h12M4 7h.01M4 12h.01M4 17h.01"/></svg>
+          </div>
+          <h3 class="font-bold text-lg text-ink">Acarreos</h3>
+          <p class="mt-2 text-slate-600 text-sm">Acarreamos tu mercanc&iacute;a cubriendo los imprevistos del trayecto.</p>
+        </div>
+
+        <div class="reveal tilt bg-white border border-slate-200 p-7 rounded-2xl cursor-pointer">
+          <div class="w-11 h-11 bg-brand/5 rounded-lg flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          </div>
+          <h3 class="font-bold text-lg text-ink">Carga y descarga de palets</h3>
+          <p class="mt-2 text-slate-600 text-sm">Nos encargamos de la carga y descarga con total garant&iacute;a.</p>
+        </div>
+
+        <div class="reveal d-1 tilt bg-white border border-slate-200 p-7 rounded-2xl cursor-pointer">
+          <div class="w-11 h-11 bg-brand/5 rounded-lg flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          </div>
+          <h3 class="font-bold text-lg text-ink">Almacenaje y distribuci&oacute;n</h3>
+          <p class="mt-2 text-slate-600 text-sm">Almacenamos la mercanc&iacute;a hasta el momento &oacute;ptimo de su distribuci&oacute;n.</p>
+        </div>
+
+        <div class="reveal d-2 tilt bg-brand text-white p-7 rounded-2xl cursor-pointer">
+          <div class="w-11 h-11 bg-white/10 rounded-lg flex items-center justify-center mb-5">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="font-bold text-lg">Seguimiento GPS</h3>
+          <p class="mt-2 text-white/70 text-sm">Tenemos un seguimiento en tiempo real de cada camion. Acceso online para el cliente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ LATEST WORK GALLERY ============ -->
+  <section id="trabajos" class="py-20 sm:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-14">
+        <span class="text-brand-light font-semibold text-sm uppercase tracking-widest accent-line reveal">&Uacute;ltimos trabajos</span>
+        <h2 class="reveal d-1 mt-5 font-black text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight">
+          Algunos de los trabajos que hemos realizado alrededor de Europa.
+        </h2>
+      </div>
+
+      <!-- Asymmetric photo grid -->
+      <div class="grid grid-cols-12 gap-4 sm:gap-5">
+        <div class="reveal col-span-12 md:col-span-8 zoom-wrap relative group">
+          <img src="images/cargar.jpeg" alt="Carga de rollos de papel" class="zoom-img w-full h-full object-cover aspect-[16/10]">
+          <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="absolute bottom-5 left-5 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="text-xs uppercase tracking-widest text-brand-accent font-semibold">Industrial</div>
+            <div class="font-bold text-xl mt-1">Carga de rollos de papel</div>
+          </div>
+        </div>
+
+        <div class="reveal d-1 col-span-6 md:col-span-4 zoom-wrap relative group">
+          <img src="images/OCTUBRE-copia.jpeg" alt="Carga de placas metalicas" class="zoom-img w-full h-full object-cover aspect-square">
+          <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="absolute bottom-5 left-5 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="text-xs uppercase tracking-widest text-brand-accent font-semibold">Metal&uacute;rgico</div>
+            <div class="font-bold text-lg mt-1">Placas de metal</div>
+          </div>
+        </div>
+
+        <div class="reveal d-2 col-span-6 md:col-span-4 zoom-wrap relative group">
+          <img src="images/CARGAR-2.jpeg" alt="Carga de muebles industriales" class="zoom-img w-full h-full object-cover aspect-[4/3]">
+          <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="absolute bottom-5 left-5 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="text-xs uppercase tracking-widest text-brand-accent font-semibold">Construcci&oacute;n</div>
+            <div class="font-bold text-lg mt-1">Material industrial</div>
+          </div>
+        </div>
+
+        <div class="reveal col-span-12 md:col-span-8 bg-gradient-to-br from-brand to-brand-dark rounded-xl p-8 sm:p-10 text-white flex flex-col justify-center">
+          <div class="text-xs uppercase tracking-widest text-brand-accent font-semibold">Qu&eacute; transportamos</div>
+          <h3 class="font-black text-2xl sm:text-3xl mt-2 leading-tight">
+            Mercanc&iacute;a general y perecedera por toda Europa.
+          </h3>
+          <div class="mt-6 flex flex-wrap gap-2">
+            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Productos manufacturados</span>
+            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Materias primas</span>
+            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Productos l&aacute;cteos</span>
+            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Material de construcci&oacute;n</span>
+            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Env&iacute;os internacionales</span>
+            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Productos textiles</span>
+            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Productos agr&iacute;colas</span>
+            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Productos metal&uacute;rgicos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ HISTORY TIMELINE ============ -->
+  <section id="historia" class="py-20 sm:py-28 bg-bone">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="reveal text-brand-light font-semibold text-sm uppercase tracking-widest">Desde 1960</span>
+        <h2 class="reveal d-1 mt-4 font-black text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight">
+          Tres generaciones sobre la carretera.
+        </h2>
+        <p class="reveal d-2 mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
+          Empresa joven y din&aacute;mica con una amplia experiencia familiar que se remonta a los a&ntilde;os 60.
+        </p>
+      </div>
+
+      <div class="relative">
+        <!-- Vertical line -->
+        <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 md:-translate-x-1/2"></div>
+
+        <!-- 1960s -->
+        <div class="reveal relative flex flex-col md:flex-row md:items-center mb-12 md:mb-16">
+          <div class="md:w-1/2 md:pr-12 md:text-right pl-12 md:pl-0">
+            <div class="text-brand-light font-bold text-sm">1960s</div>
+            <h3 class="font-bold text-xl text-ink mt-1">El primer cami&oacute;n</h3>
+            <p class="mt-2 text-slate-600">Salvador G&oacute;mez Cucarella empieza con un peque&ntilde;o cami&oacute;n haciendo ruta nacional por toda Espa&ntilde;a transportando toda clase de mercanc&iacute;a.</p>
+          </div>
+          <div class="milestone-dot absolute left-4 md:left-1/2 top-0 w-4 h-4 bg-brand-light rounded-full md:-translate-x-1/2 -translate-y-0 md:-translate-y-1/2 border-4 border-bone z-10"></div>
+          <div class="md:w-1/2"></div>
+        </div>
+
+        <!-- 1990s -->
+        <div class="reveal relative flex flex-col md:flex-row md:items-center mb-12 md:mb-16">
+          <div class="md:w-1/2"></div>
+          <div class="milestone-dot absolute left-4 md:left-1/2 top-0 w-4 h-4 bg-brand-light rounded-full md:-translate-x-1/2 border-4 border-bone z-10"></div>
+          <div class="md:w-1/2 md:pl-12 pl-12">
+            <div class="text-brand-light font-bold text-sm">1990s</div>
+            <h3 class="font-bold text-xl text-ink mt-1">La aventura familiar</h3>
+            <p class="mt-2 text-slate-600">&Oacute;scar G&oacute;mez Jim&eacute;nez se une junto a su padre. Adquieren el primer veh&iacute;culo articulado y empiezan a ganar terreno ofreciendo un servicio excelente.</p>
+          </div>
+        </div>
+
+        <!-- 2008 -->
+        <div class="reveal relative flex flex-col md:flex-row md:items-center mb-12 md:mb-16">
+          <div class="md:w-1/2 md:pr-12 md:text-right pl-12 md:pl-0">
+            <div class="text-brand font-bold text-sm">10 Enero 2008</div>
+            <h3 class="font-bold text-xl text-ink mt-1">Nace Bontransport, S.L.</h3>
+            <p class="mt-2 text-slate-600">Con esfuerzo y sacrificio se formaliza la empresa, cubriendo cada vez m&aacute;s necesidades de los clientes y manteniendo la din&aacute;mica familiar.</p>
+          </div>
+          <div class="milestone-dot absolute left-4 md:left-1/2 top-0 w-5 h-5 bg-brand rounded-full md:-translate-x-1/2 border-4 border-bone z-10 ring-4 ring-brand/20"></div>
+          <div class="md:w-1/2"></div>
+        </div>
+
+        <!-- Present -->
+        <div class="reveal relative flex flex-col md:flex-row md:items-center">
+          <div class="md:w-1/2"></div>
+          <div class="milestone-dot absolute left-4 md:left-1/2 top-0 w-4 h-4 bg-green-500 rounded-full md:-translate-x-1/2 border-4 border-bone z-10"></div>
+          <div class="md:w-1/2 md:pl-12 pl-12">
+            <div class="text-green-600 font-bold text-sm">Actualidad</div>
+            <h3 class="font-bold text-xl text-ink mt-1">Toda Europa y Suiza</h3>
+            <p class="mt-2 text-slate-600">Transportamos mercanc&iacute;a general y perecedera por toda Europa, consolid&aacute;ndonos como empresa de referencia en responsabilidad y respuesta de mercado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ MOTTOS ============ -->
+  <section class="py-20 bg-ink text-white relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="reveal text-brand-accent font-semibold text-sm uppercase tracking-widest">Nuestros lemas</span>
+      <blockquote class="reveal d-1 mt-8 font-black text-2xl sm:text-3xl lg:text-4xl leading-[1.2] max-w-4xl mx-auto">
+        &ldquo;Un cliente satisfecho es el resultado de un <span class="text-brand-accent">buen servicio de transporte</span>.&rdquo;
+      </blockquote>
+      <div class="reveal d-2 mt-10 pt-10 border-t border-white/10 font-bold text-lg text-white/70">
+        La seriedad, la puntualidad y el buen hacer.
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contacto" class="py-20 sm:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Info -->
+        <div>
+          <span class="reveal text-brand-light font-semibold text-sm uppercase tracking-widest accent-line">Contacto</span>
+          <h2 class="reveal d-1 mt-5 font-black text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight">
+            &iquest;Tienes una carga que mover?
+          </h2>
+          <p class="reveal d-2 mt-4 text-lg text-slate-600">
+            Cu&eacute;ntanos qu&eacute; necesitas. Te respondemos en menos de 24 horas con un presupuesto personalizado.
+          </p>
+
+          <div class="reveal mt-10 space-y-5">
+            <a href="tel:+34962978340" class="flex items-center gap-4 group cursor-pointer">
+              <div class="w-12 h-12 bg-brand/5 group-hover:bg-brand/10 rounded-lg flex items-center justify-center transition-colors">
+                <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </div>
+              <div>
+                <div class="font-bold text-ink">962 97 83 40</div>
+                <div class="text-sm text-slate-500">Llama a cualquier hora</div>
+              </div>
+            </a>
+
+            <a href="mailto:info@bontransport.com" class="flex items-center gap-4 group cursor-pointer">
+              <div class="w-12 h-12 bg-brand/5 group-hover:bg-brand/10 rounded-lg flex items-center justify-center transition-colors">
+                <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <div class="font-bold text-ink">info@bontransport.com</div>
+                <div class="text-sm text-slate-500">Cualquier duda a este correo</div>
+              </div>
+            </a>
+
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-brand/5 rounded-lg flex-shrink-0 flex items-center justify-center">
+                <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <div class="font-bold text-ink">Bontransport, S.L.</div>
+                <div class="text-sm text-slate-500">Carrer de Ponent, 16<br>46612 Corbera, Valencia</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social -->
+          <div class="reveal mt-10 pt-8 border-t border-slate-100">
+            <div class="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-4">S&iacute;guenos</div>
+            <div class="flex gap-2">
+              <a href="https://www.facebook.com/bontransportsl/" target="_blank" rel="noopener" class="w-10 h-10 bg-slate-100 hover:bg-brand hover:text-white rounded-lg flex items-center justify-center text-slate-600 transition-colors cursor-pointer" aria-label="Facebook">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+              <a href="https://www.instagram.com/bontransportsl/" target="_blank" rel="noopener" class="w-10 h-10 bg-slate-100 hover:bg-brand hover:text-white rounded-lg flex items-center justify-center text-slate-600 transition-colors cursor-pointer" aria-label="Instagram">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              </a>
+              <a href="https://twitter.com/bontransportSL" target="_blank" rel="noopener" class="w-10 h-10 bg-slate-100 hover:bg-brand hover:text-white rounded-lg flex items-center justify-center text-slate-600 transition-colors cursor-pointer" aria-label="Twitter">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="https://www.youtube.com/@ludwigbontransport2672" target="_blank" rel="noopener" class="w-10 h-10 bg-slate-100 hover:bg-brand hover:text-white rounded-lg flex items-center justify-center text-slate-600 transition-colors cursor-pointer" aria-label="YouTube">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+              <a href="https://www.pinterest.es/BontransportSl/" target="_blank" rel="noopener" class="w-10 h-10 bg-slate-100 hover:bg-brand hover:text-white rounded-lg flex items-center justify-center text-slate-600 transition-colors cursor-pointer" aria-label="Pinterest">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12.017 24c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641 0 12.017 0z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="reveal d-2">
+          <div class="bg-bone rounded-2xl p-8 border border-slate-100">
+            <h3 class="font-bold text-xl text-ink mb-6">Ponerse en contacto</h3>
+            <form onsubmit="return false;" class="space-y-4">
+              <div>
+                <label for="name" class="block text-sm font-semibold text-ink mb-1.5">Nombre</label>
+                <input id="name" type="text" placeholder="Tu nombre" class="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-light/30 focus:border-brand-light transition-all">
+              </div>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="email" class="block text-sm font-semibold text-ink mb-1.5">Gmail</label>
+                  <input id="email" type="email" placeholder="tu@email.com" class="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-light/30 focus:border-brand-light transition-all">
+                </div>
+                <div>
+                  <label for="phone" class="block text-sm font-semibold text-ink mb-1.5">Tel&eacute;fono</label>
+                  <input id="phone" type="tel" placeholder="+34 ..." class="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-light/30 focus:border-brand-light transition-all">
+                </div>
+              </div>
+              <div>
+                <label for="message" class="block text-sm font-semibold text-ink mb-1.5">Mensaje</label>
+                <textarea id="message" rows="4" placeholder="Cu&eacute;ntanos tu necesidad..." class="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-light/30 focus:border-brand-light transition-all resize-none"></textarea>
+              </div>
+              <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-3.5 rounded-lg transition-colors cursor-pointer shadow-lg shadow-brand/20">
+                Enviar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-ink text-white py-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div class="lg:col-span-1">
+          <img src="images/logo.perfect.png" alt="Bontransport" class="h-10 brightness-0 invert mb-4">
+          <p class="text-sm text-white/50 leading-relaxed">Transporte internacional desde Corbera, Valencia. Desde los a&ntilde;os 60.</p>
+        </div>
+
+        <div>
+          <div class="text-xs uppercase tracking-widest text-white/40 font-semibold mb-4">Navegaci&oacute;n</div>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#top" class="text-white/70 hover:text-brand-accent cursor-pointer transition-colors">Inicio</a></li>
+            <li><a href="#servicios" class="text-white/70 hover:text-brand-accent cursor-pointer transition-colors">Servicios</a></li>
+            <li><a href="#flota" class="text-white/70 hover:text-brand-accent cursor-pointer transition-colors">Flota</a></li>
+            <li><a href="#historia" class="text-white/70 hover:text-brand-accent cursor-pointer transition-colors">Historia</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="text-xs uppercase tracking-widest text-white/40 font-semibold mb-4">Contacto</div>
+          <ul class="space-y-2 text-sm">
+            <li><a href="tel:+34962978340" class="text-white/70 hover:text-brand-accent cursor-pointer transition-colors">962 97 83 40</a></li>
+            <li><a href="mailto:info@bontransport.com" class="text-white/70 hover:text-brand-accent cursor-pointer transition-colors">info@bontransport.com</a></li>
+            <li class="text-white/50">Carrer de Ponent, 16</li>
+            <li class="text-white/50">46612 Corbera, Valencia</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="text-xs uppercase tracking-widest text-white/40 font-semibold mb-4">Redes</div>
+          <div class="flex gap-2">
+            <a href="https://www.facebook.com/bontransportsl/" target="_blank" rel="noopener" class="w-9 h-9 bg-white/5 hover:bg-brand-light rounded-lg flex items-center justify-center cursor-pointer transition-colors" aria-label="Facebook">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/bontransportsl/" target="_blank" rel="noopener" class="w-9 h-9 bg-white/5 hover:bg-brand-light rounded-lg flex items-center justify-center cursor-pointer transition-colors" aria-label="Instagram">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://twitter.com/bontransportSL" target="_blank" rel="noopener" class="w-9 h-9 bg-white/5 hover:bg-brand-light rounded-lg flex items-center justify-center cursor-pointer transition-colors" aria-label="Twitter">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/40">
+        <div>&copy; 2026 Bontransport, S.L. Todos los derechos reservados.</div>
+        <div>Transporte internacional desde Valencia</div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============ SCRIPTS ============ -->
+  <script>
+    // Reveal on scroll
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // Nav scroll state
+    const nav = document.getElementById('nav');
+    const navLogo = document.querySelector('.nav-logo');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const langBtns = document.querySelectorAll('.lang-btn');
+    const navHamburger = document.querySelector('.nav-hamburger');
+
+    function setNavState(scrolled) {
+      if (scrolled) {
+        nav.classList.add('nav-scrolled');
+        if (navLogo) { navLogo.classList.remove('brightness-0', 'invert'); }
+        navLinks.forEach(l => { l.classList.remove('text-white'); l.classList.add('text-ink'); });
+        langBtns.forEach((b, i) => {
+          if (i === 0) { b.classList.remove('text-white'); b.classList.add('text-ink'); }
+          else { b.classList.remove('text-white/50'); b.classList.add('text-slate-400'); }
+        });
+        if (navHamburger) { navHamburger.classList.remove('text-white'); navHamburger.classList.add('text-ink'); }
+      } else {
+        nav.classList.remove('nav-scrolled');
+        if (navLogo) { navLogo.classList.add('brightness-0', 'invert'); }
+        navLinks.forEach(l => { l.classList.add('text-white'); l.classList.remove('text-ink'); });
+        langBtns.forEach((b, i) => {
+          if (i === 0) { b.classList.add('text-white'); b.classList.remove('text-ink'); }
+          else { b.classList.add('text-white/50'); b.classList.remove('text-slate-400'); }
+        });
+        if (navHamburger) { navHamburger.classList.add('text-white'); navHamburger.classList.remove('text-ink'); }
+      }
+    }
+    setNavState(false);
+    window.addEventListener('scroll', () => setNavState(window.scrollY > 60));
+
+    // Counters
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target, 10);
+      const suffix = el.dataset.suffix || '';
+      if (reduced) { el.innerHTML = target + suffix; return; }
+      const dur = 1600;
+      const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.innerHTML = Math.floor(target * eased).toLocaleString('es-ES') + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          animateCounter(e.target);
+          counterObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+
+    // Milestone dot pulse
+    const mObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const dot = e.target.querySelector('.milestone-dot');
+          if (dot) {
+            dot.classList.add('active');
+            setTimeout(() => dot.classList.remove('active'), 2000);
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('#historia .reveal').forEach(el => mObs.observe(el));
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+    closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => mobileMenu.classList.remove('open')));
+  </script>
+</body>
+</html>

@@ -6,6 +6,12 @@
       "runtimeExecutable": "C:\\Users\\anfer\\AppData\\Local\\Python\\bin\\python.exe",
       "runtimeArgs": ["-m", "http.server", "8080", "--directory", "bontransport"],
       "port": 8080
+    },
+    {
+      "name": "bontransport-refresh",
+      "runtimeExecutable": "C:\\Users\\anfer\\AppData\\Local\\Python\\bin\\python.exe",
+      "runtimeArgs": ["-m", "http.server", "8081", "--directory", "bontransport-refresh"],
+      "port": 8081
     }
   ]
 }
