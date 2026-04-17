@@ -203,6 +203,133 @@
     .mobile-menu.open {
       transform: translateX(0);
     }
+
+    /* ===== Truck driving animation ===== */
+    .truck-road {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 140px;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .road-surface {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(62,124,177,0.4), rgba(232,93,38,0.6), rgba(62,124,177,0.4), transparent);
+    }
+    .road-dashes {
+      position: absolute;
+      bottom: 24px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-image: linear-gradient(90deg, rgba(255,255,255,0.25) 50%, transparent 50%);
+      background-size: 48px 2px;
+      animation: roadDash 2.5s linear infinite;
+    }
+    @keyframes roadDash {
+      0% { background-position: 0 0; }
+      100% { background-position: -48px 0; }
+    }
+    .driving-truck {
+      position: absolute;
+      bottom: 30px;
+      left: -200px;
+      width: 180px;
+      animation: drive 18s linear infinite;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
+    }
+    .driving-truck .wheel {
+      animation: spin 0.4s linear infinite;
+      transform-origin: center;
+    }
+    @keyframes drive {
+      0% { transform: translateX(0); }
+      45% { transform: translateX(60vw) translateY(0); }
+      50% { transform: translateX(65vw) translateY(-3px); }
+      55% { transform: translateX(70vw) translateY(0); }
+      100% { transform: translateX(calc(100vw + 200px)); }
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ===== Live GPS pulse ===== */
+    .gps-pulse {
+      position: relative;
+    }
+    .gps-pulse::before,
+    .gps-pulse::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid #E85D26;
+      animation: gpsRing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    .gps-pulse::after {
+      animation-delay: 1s;
+    }
+    @keyframes gpsRing {
+      0% { transform: scale(0.8); opacity: 1; }
+      100% { transform: scale(2.5); opacity: 0; }
+    }
+
+    /* ===== Route path draw ===== */
+    .route-path {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      transition: stroke-dashoffset 2.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .route-path.drawn {
+      stroke-dashoffset: 0;
+    }
+
+    /* ===== Timeline pulse on active ===== */
+    .timeline-dot.active {
+      animation: timelinePulse 2s ease-in-out infinite;
+      box-shadow: 0 0 0 0 rgba(232, 93, 38, 0.6);
+    }
+    @keyframes timelinePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(232, 93, 38, 0.6); }
+      50% { box-shadow: 0 0 0 12px rgba(232, 93, 38, 0); }
+    }
+
+    /* ===== Counter smooth ===== */
+    .counter {
+      display: inline-block;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ===== Reveal-soft alternative for motion sensitivity ===== */
+    @media (prefers-reduced-motion: reduce) {
+      .driving-truck, .road-dashes, .gps-pulse::before, .gps-pulse::after,
+      .timeline-dot.active { animation: none !important; }
+      .route-path { stroke-dashoffset: 0 !important; transition: none !important; }
+    }
+
+    /* ===== Cargo stack animation in transport section ===== */
+    .transport-card:hover .transport-icon {
+      animation: bounce 0.6s ease;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* ===== Gradient mesh for CTA banner ===== */
+    .mesh-bg {
+      background:
+        radial-gradient(at 20% 30%, rgba(232,93,38,0.15) 0, transparent 50%),
+        radial-gradient(at 80% 70%, rgba(62,124,177,0.2) 0, transparent 50%),
+        #0B2545;
+    }
   </style>
 </head>
 <body class="bg-cloud">
@@ -319,8 +446,52 @@
       </div>
     </div>
 
+    <!-- Animated truck driving across hero -->
+    <div class="truck-road" aria-hidden="true">
+      <div class="road-surface"></div>
+      <div class="road-dashes"></div>
+      <svg class="driving-truck" viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg">
+        <!-- Trailer -->
+        <rect x="10" y="20" width="110" height="50" rx="3" fill="#FFFFFF" stroke="#0B2545" stroke-width="1.5"/>
+        <rect x="16" y="26" width="98" height="38" rx="2" fill="#F7F8FA"/>
+        <!-- Brand panel on trailer -->
+        <rect x="22" y="34" width="86" height="22" rx="1" fill="#0B2545"/>
+        <text x="65" y="49" text-anchor="middle" fill="#FFFFFF" font-family="Montserrat, sans-serif" font-weight="800" font-size="11">
+          <tspan fill="#E85D26">BON</tspan>TRANSPORT
+        </text>
+        <!-- Cab -->
+        <path d="M120,70 L120,30 Q120,22 128,22 L160,22 Q168,22 170,30 L180,50 L180,70 Z" fill="#E85D26"/>
+        <!-- Window -->
+        <path d="M128,30 L158,30 L168,48 L128,48 Z" fill="#3E7CB1" opacity="0.8"/>
+        <path d="M128,30 L158,30 L168,48 L128,48 Z" fill="none" stroke="#0B2545" stroke-width="1"/>
+        <!-- Headlight -->
+        <circle cx="177" cy="54" r="2.5" fill="#FFF8DC"/>
+        <!-- Cab body outline -->
+        <path d="M120,70 L120,30 Q120,22 128,22 L160,22 Q168,22 170,30 L180,50 L180,70" fill="none" stroke="#0B2545" stroke-width="1.5"/>
+        <!-- Wheels -->
+        <g class="wheel" style="transform-origin: 35px 72px;">
+          <circle cx="35" cy="72" r="8" fill="#1B1B1E"/>
+          <circle cx="35" cy="72" r="4" fill="#4A5568"/>
+          <rect x="34" y="64" width="2" height="16" fill="#F7F8FA"/>
+          <rect x="27" y="71" width="16" height="2" fill="#F7F8FA"/>
+        </g>
+        <g class="wheel" style="transform-origin: 65px 72px;">
+          <circle cx="65" cy="72" r="8" fill="#1B1B1E"/>
+          <circle cx="65" cy="72" r="4" fill="#4A5568"/>
+          <rect x="64" y="64" width="2" height="16" fill="#F7F8FA"/>
+          <rect x="57" y="71" width="16" height="2" fill="#F7F8FA"/>
+        </g>
+        <g class="wheel" style="transform-origin: 150px 72px;">
+          <circle cx="150" cy="72" r="8" fill="#1B1B1E"/>
+          <circle cx="150" cy="72" r="4" fill="#4A5568"/>
+          <rect x="149" y="64" width="2" height="16" fill="#F7F8FA"/>
+          <rect x="142" y="71" width="16" height="2" fill="#F7F8FA"/>
+        </g>
+      </svg>
+    </div>
+
     <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/30 animate-bounce">
+    <div class="absolute bottom-40 left-1/2 -translate-x-1/2 text-white/30 animate-bounce hidden sm:block" aria-hidden="true">
       <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
       </svg>
@@ -333,11 +504,11 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-gray-100">
         <div class="reveal py-10 px-6 text-center">
-          <div class="font-heading font-bold text-3xl sm:text-4xl text-navy stat-number">60+</div>
+          <div class="font-heading font-bold text-3xl sm:text-4xl text-navy stat-number"><span class="counter" data-target="60" data-suffix="+">0</span></div>
           <div class="font-body text-sm text-slate2 mt-1">A&ntilde;os de experiencia</div>
         </div>
         <div class="reveal reveal-delay-1 py-10 px-6 text-center">
-          <div class="font-heading font-bold text-3xl sm:text-4xl text-navy stat-number">300K&euro;</div>
+          <div class="font-heading font-bold text-3xl sm:text-4xl text-navy stat-number"><span class="counter" data-target="300" data-suffix="K&euro;">0</span></div>
           <div class="font-body text-sm text-slate2 mt-1">Seguro de mercanc&iacute;as</div>
         </div>
         <div class="reveal reveal-delay-2 py-10 px-6 text-center">
@@ -345,7 +516,7 @@
           <div class="font-body text-sm text-slate2 mt-1">GPS en tiempo real</div>
         </div>
         <div class="reveal reveal-delay-3 py-10 px-6 text-center">
-          <div class="font-heading font-bold text-3xl sm:text-4xl text-navy stat-number">30+</div>
+          <div class="font-heading font-bold text-3xl sm:text-4xl text-navy stat-number"><span class="counter" data-target="30" data-suffix="+">0</span></div>
           <div class="font-body text-sm text-slate2 mt-1">Pa&iacute;ses en Europa</div>
         </div>
       </div>
@@ -442,14 +613,14 @@
             <h3 class="font-heading font-bold text-xl text-white mt-2">El inicio</h3>
             <p class="font-body text-white/60 mt-2 leading-relaxed">Salvador G&oacute;mez Cucarella empieza con un peque&ntilde;o cami&oacute;n haciendo ruta nacional por toda Espa&ntilde;a, transportando toda clase de mercanc&iacute;a.</p>
           </div>
-          <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-navy z-10"></div>
+          <div class="timeline-dot hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-navy z-10"></div>
           <div class="md:w-1/2 md:pl-12"></div>
         </div>
 
         <!-- 1990s -->
         <div class="reveal reveal-delay-1 relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-0 mb-16">
           <div class="md:w-1/2 md:pr-12"></div>
-          <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-steel rounded-full border-4 border-navy z-10"></div>
+          <div class="timeline-dot hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-steel rounded-full border-4 border-navy z-10"></div>
           <div class="md:w-1/2 md:pl-12">
             <span class="font-heading font-bold text-steel text-sm">A&ntilde;os 90</span>
             <h3 class="font-heading font-bold text-xl text-white mt-2">La expansi&oacute;n</h3>
@@ -464,14 +635,14 @@
             <h3 class="font-heading font-bold text-xl text-white mt-2">Nace Bontransport S.L.</h3>
             <p class="font-body text-white/60 mt-2 leading-relaxed">Con esfuerzo y sacrificio, &Oacute;scar formaliza la empresa el 10 de enero de 2008, siguiendo la misma din&aacute;mica de trabajo y compromiso que siempre ha definido a la familia.</p>
           </div>
-          <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-5 h-5 bg-accent rounded-full border-4 border-navy z-10 ring-4 ring-accent/20"></div>
+          <div class="timeline-dot hidden md:flex absolute left-1/2 -translate-x-1/2 w-5 h-5 bg-accent rounded-full border-4 border-navy z-10 ring-4 ring-accent/20"></div>
           <div class="md:w-1/2 md:pl-12"></div>
         </div>
 
         <!-- Present -->
         <div class="reveal reveal-delay-3 relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-0">
           <div class="md:w-1/2 md:pr-12"></div>
-          <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-trust rounded-full border-4 border-navy z-10"></div>
+          <div class="timeline-dot hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-trust rounded-full border-4 border-navy z-10"></div>
           <div class="md:w-1/2 md:pl-12">
             <span class="font-heading font-bold text-trust text-sm">Actualidad</span>
             <h3 class="font-heading font-bold text-xl text-white mt-2">L&iacute;deres en transporte europeo</h3>
@@ -535,13 +706,46 @@
               <div class="absolute bottom-10 left-10 w-60 h-60 border border-accent/20 rounded-full"></div>
             </div>
             <div class="relative z-10">
-              <div class="flex items-center gap-4 mb-8">
-                <div class="w-16 h-16 bg-accent rounded-xl flex items-center justify-center">
-                  <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0H21M3.375 14.25h2.25m0 0V9.75m0 4.5h9.75M5.625 9.75h4.5m-4.5 0V5.625m0 4.125h4.5V5.625m0 0H5.625m4.5 0h5.25l3 4.5"/></svg>
+              <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center gap-4">
+                  <div class="w-16 h-16 bg-accent rounded-xl flex items-center justify-center">
+                    <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0H21M3.375 14.25h2.25m0 0V9.75m0 4.5h9.75M5.625 9.75h4.5m-4.5 0V5.625m0 4.125h4.5V5.625m0 0H5.625m4.5 0h5.25l3 4.5"/></svg>
+                  </div>
+                  <div>
+                    <h3 class="font-heading font-bold text-xl text-white">Flota moderna</h3>
+                    <p class="font-body text-white/50 text-sm">&Uacute;ltima generaci&oacute;n</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 class="font-heading font-bold text-xl text-white">Flota moderna</h3>
-                  <p class="font-body text-white/50 text-sm">Veh&iacute;culos articulados de &uacute;ltima generaci&oacute;n</p>
+                <div class="flex items-center gap-2 bg-trust/20 border border-trust/40 rounded-full px-3 py-1">
+                  <span class="w-2 h-2 bg-trust rounded-full animate-pulse"></span>
+                  <span class="font-heading font-semibold text-trust text-xs">LIVE</span>
+                </div>
+              </div>
+
+              <!-- Mini map with animated GPS pin -->
+              <div class="relative bg-navy-dark rounded-lg h-32 mb-4 overflow-hidden border border-white/10">
+                <svg class="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 300 128" preserveAspectRatio="none">
+                  <!-- Route path drawn on hover/scroll -->
+                  <path class="route-path hero-route" d="M20,100 Q60,80 100,85 T180,60 Q220,50 260,30 L285,20" stroke="#E85D26" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <!-- Grid -->
+                  <path d="M0,32 L300,32 M0,64 L300,64 M0,96 L300,96" stroke="#3E7CB1" stroke-width="0.5" opacity="0.3"/>
+                  <path d="M60,0 L60,128 M120,0 L120,128 M180,0 L180,128 M240,0 L240,128" stroke="#3E7CB1" stroke-width="0.5" opacity="0.3"/>
+                  <!-- Start pin -->
+                  <circle cx="20" cy="100" r="4" fill="#3E7CB1"/>
+                  <!-- End pin -->
+                  <circle cx="285" cy="20" r="4" fill="#2D6A4F"/>
+                </svg>
+                <!-- Live truck position -->
+                <div class="absolute" style="left: 60%; top: 35%;">
+                  <div class="gps-pulse w-3 h-3 bg-accent rounded-full relative z-10"></div>
+                </div>
+                <div class="absolute bottom-2 left-3 flex gap-2">
+                  <span class="font-body text-xs text-white/60">Valencia</span>
+                  <span class="font-body text-xs text-white/40">&rarr;</span>
+                  <span class="font-body text-xs text-white/60">Berl&iacute;n</span>
+                </div>
+                <div class="absolute top-2 right-3">
+                  <span class="font-heading font-bold text-accent text-xs tabular-nums">1.847 km</span>
                 </div>
               </div>
 
@@ -688,8 +892,8 @@
 
 
   <!-- ============ CTA BANNER ============ -->
-  <section class="py-20 bg-navy relative overflow-hidden">
-    <div class="absolute inset-0 opacity-5">
+  <section class="py-20 mesh-bg relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
       <div class="route-lines"><div class="route-line-3"></div></div>
     </div>
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -886,6 +1090,65 @@
     }, observerOptions);
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ===== Count-up numbers =====
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target, 10);
+      const suffix = el.dataset.suffix || '';
+      if (prefersReducedMotion) {
+        el.textContent = target + suffix.replace(/&[a-z]+;/g, m => ({'&euro;':'\u20AC'}[m] || m));
+        return;
+      }
+      const duration = 1600;
+      const start = performance.now();
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(target * eased);
+        el.innerHTML = current + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+    // ===== Route path draw on scroll =====
+    const routeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('drawn');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.route-path').forEach(el => routeObserver.observe(el));
+
+    // ===== Timeline dot pulse when in view =====
+    const timelineObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const dot = entry.target.querySelector('.timeline-dot');
+          if (dot) {
+            dot.classList.add('active');
+            setTimeout(() => dot.classList.remove('active'), 3000);
+          }
+        }
+      });
+    }, { threshold: 0.6 });
+
+    document.querySelectorAll('#historia .reveal').forEach(el => timelineObserver.observe(el));
 
     // Navbar scroll effect
     const navbar = document.getElementById('navbar');

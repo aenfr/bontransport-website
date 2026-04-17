@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install:*)",
+      "Bash(python3 -m pip install \"scrapling[all]\")",
+      "Bash(where python:*)",
+      "Bash(where python3:*)",
+      "Bash(where pip:*)",
+      "Bash(where pip3:*)",
+      "Bash(ls /c/Python*/python.exe)",
+      "Bash(/c/Users/anfer/AppData/Local/Python/bin/python.exe --version)",
+      "Bash(/c/Users/anfer/AppData/Local/Python/bin/python.exe -m pip install \"scrapling[all]\")",
+      "Bash(/c/Users/anfer/AppData/Local/Python/bin/python.exe -c \"from scrapling.fetchers import Fetcher; print\\('Scrapling ready'\\)\")",
+      "Bash(/c/Users/anfer/AppData/Local/Python/bin/python.exe -c ':*)"
+    ]
+  }
+}

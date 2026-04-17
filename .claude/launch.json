@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "bontransport",
+      "runtimeExecutable": "C:\\Users\\anfer\\AppData\\Local\\Python\\bin\\python.exe",
+      "runtimeArgs": ["-m", "http.server", "8080", "--directory", "bontransport"],
+      "port": 8080
+    }
+  ]
+}
