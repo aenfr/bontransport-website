@@ -202,11 +202,11 @@
         </a>
 
         <div class="hidden lg:flex items-center gap-8">
-          <a href="#servicios" class="nav-link font-medium text-sm text-white hover:text-brand-accent transition-colors cursor-pointer">Servicios</a>
-          <a href="#flota" class="nav-link font-medium text-sm text-white hover:text-brand-accent transition-colors cursor-pointer">Flota</a>
-          <a href="#trabajos" class="nav-link font-medium text-sm text-white hover:text-brand-accent transition-colors cursor-pointer">Trabajos</a>
-          <a href="#historia" class="nav-link font-medium text-sm text-white hover:text-brand-accent transition-colors cursor-pointer">Historia</a>
-          <a href="#contacto" class="nav-link font-medium text-sm text-white hover:text-brand-accent transition-colors cursor-pointer">Contacto</a>
+          <a href="#servicios" data-i18n="nav.services" class="nav-link font-medium text-sm text-white hover:text-brand-accent transition-colors cursor-pointer">Servicios</a>
+          <a href="#flota" data-i18n="nav.fleet" class="nav-link font-medium text-sm text-white hover:text-brand-accent transition-colors cursor-pointer">Flota</a>
+          <a href="#trabajos" data-i18n="nav.work" class="nav-link font-medium text-sm text-white hover:text-brand-accent transition-colors cursor-pointer">Trabajos</a>
+          <a href="#historia" data-i18n="nav.history" class="nav-link font-medium text-sm text-white hover:text-brand-accent transition-colors cursor-pointer">Historia</a>
+          <a href="#contacto" data-i18n="nav.contact" class="nav-link font-medium text-sm text-white hover:text-brand-accent transition-colors cursor-pointer">Contacto</a>
           <div class="flex items-center gap-2 ml-4">
             <button class="lang-btn font-semibold text-xs text-white hover:text-brand-accent cursor-pointer" data-lang="es">ES</button>
             <span class="text-white/30">|</span>
@@ -214,7 +214,7 @@
             <span class="text-white/30">|</span>
             <button class="lang-btn font-semibold text-xs text-white/50 hover:text-brand-accent cursor-pointer" data-lang="fr">FR</button>
           </div>
-          <a href="#contacto" class="bg-brand-light hover:bg-brand text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors cursor-pointer">Presupuesto</a>
+          <a href="#contacto" data-i18n="nav.quote" class="bg-brand-light hover:bg-brand text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors cursor-pointer">Presupuesto</a>
         </div>
 
         <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center cursor-pointer nav-hamburger text-white" aria-label="Menu">
@@ -251,40 +251,40 @@
     <!-- Nav links -->
     <nav class="flex-1 px-6 py-8 flex flex-col gap-1 overflow-y-auto">
       <a href="#servicios" class="mobile-link flex items-center justify-between group text-white font-semibold text-lg py-3 px-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
-        Servicios
+        <span data-i18n="nav.services">Servicios</span>
         <svg class="w-4 h-4 text-white/30 group-hover:text-brand-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </a>
       <a href="#flota" class="mobile-link flex items-center justify-between group text-white font-semibold text-lg py-3 px-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
-        Flota
+        <span data-i18n="nav.fleet">Flota</span>
         <svg class="w-4 h-4 text-white/30 group-hover:text-brand-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </a>
       <a href="#trabajos" class="mobile-link flex items-center justify-between group text-white font-semibold text-lg py-3 px-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
-        Trabajos
+        <span data-i18n="nav.work">Trabajos</span>
         <svg class="w-4 h-4 text-white/30 group-hover:text-brand-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </a>
       <a href="#historia" class="mobile-link flex items-center justify-between group text-white font-semibold text-lg py-3 px-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
-        Historia
+        <span data-i18n="nav.history">Historia</span>
         <svg class="w-4 h-4 text-white/30 group-hover:text-brand-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </a>
       <a href="#contacto" class="mobile-link flex items-center justify-between group text-white font-semibold text-lg py-3 px-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
-        Contacto
+        <span data-i18n="nav.contact">Contacto</span>
         <svg class="w-4 h-4 text-white/30 group-hover:text-brand-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </a>
 
       <!-- Language switch -->
       <div class="mt-6 pt-6 border-t border-white/10">
-        <div class="text-[10px] uppercase tracking-widest text-white/40 font-semibold px-3 mb-2">Idioma</div>
+        <div class="text-[10px] uppercase tracking-widest text-white/40 font-semibold px-3 mb-2" data-i18n="nav.language">Idioma</div>
         <div class="flex gap-2 px-3">
-          <button class="px-3 py-1.5 rounded-md bg-white/10 text-white font-semibold text-xs cursor-pointer">ES</button>
-          <button class="px-3 py-1.5 rounded-md text-white/50 hover:text-white font-semibold text-xs cursor-pointer">EN</button>
-          <button class="px-3 py-1.5 rounded-md text-white/50 hover:text-white font-semibold text-xs cursor-pointer">FR</button>
+          <button class="lang-btn-m px-3 py-1.5 rounded-md bg-white/10 text-white font-semibold text-xs cursor-pointer" data-lang="es">ES</button>
+          <button class="lang-btn-m px-3 py-1.5 rounded-md text-white/50 hover:text-white font-semibold text-xs cursor-pointer" data-lang="en">EN</button>
+          <button class="lang-btn-m px-3 py-1.5 rounded-md text-white/50 hover:text-white font-semibold text-xs cursor-pointer" data-lang="fr">FR</button>
         </div>
       </div>
     </nav>
 
     <!-- Footer with CTA + contact -->
     <div class="px-6 py-6 border-t border-white/10 bg-black/20">
-      <a href="#contacto" class="mobile-link block w-full bg-brand-light hover:bg-brand-accent text-white font-bold text-center py-3.5 rounded-lg cursor-pointer transition-colors shadow-lg shadow-brand-light/20">
+      <a href="#contacto" data-i18n="cta.quote" class="mobile-link block w-full bg-brand-light hover:bg-brand-accent text-white font-bold text-center py-3.5 rounded-lg cursor-pointer transition-colors shadow-lg shadow-brand-light/20">
         Solicitar presupuesto
       </a>
       <a href="tel:+34962978340" class="mt-3 flex items-center justify-center gap-2 text-white/70 hover:text-white text-sm font-medium py-2 cursor-pointer transition-colors">
@@ -308,18 +308,18 @@
     <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 sm:pb-24">
       <div class="reveal inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-6">
         <span class="w-2 h-2 bg-green-400 rounded-full"></span>
-        <span class="text-sm text-white font-medium">Desde Corbera, Valencia &bull; Toda Europa</span>
+        <span class="text-sm text-white font-medium" data-i18n="hero.badge">Desde Corbera, Valencia &bull; Toda Europa</span>
       </div>
-      <h1 class="reveal d-1 font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white tracking-tight leading-[1.05] max-w-4xl">
+      <h1 class="reveal d-1 font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white tracking-tight leading-[1.05] max-w-4xl" data-i18n-html="hero.title">
         Transporte internacional<br>
         <span class="text-brand-accent">con el compromiso</span> de una<br>
         empresa familiar.
       </h1>
-      <p class="reveal d-2 mt-6 text-lg sm:text-xl text-white/80 max-w-2xl leading-relaxed">
+      <p class="reveal d-2 mt-6 text-lg sm:text-xl text-white/80 max-w-2xl leading-relaxed" data-i18n="hero.subtitle">
         Llevamos tu mercanc&iacute;a a cualquier punto de Europa y Suiza con la puntualidad, seguridad y experiencia que nos avalan desde los a&ntilde;os 60.
       </p>
       <div class="reveal d-3 mt-8 flex flex-wrap gap-3">
-        <a href="#contacto" class="bg-brand-light hover:bg-brand-accent text-white font-semibold px-7 py-3.5 rounded-lg transition-colors cursor-pointer shadow-lg shadow-brand-dark/30">
+        <a href="#contacto" data-i18n="cta.quote" class="bg-brand-light hover:bg-brand-accent text-white font-semibold px-7 py-3.5 rounded-lg transition-colors cursor-pointer shadow-lg shadow-brand-dark/30">
           Solicitar presupuesto
         </a>
         <a href="tel:+34962978340" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-medium px-7 py-3.5 rounded-lg transition-colors cursor-pointer">
@@ -343,19 +343,19 @@
       <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-slate-100">
         <div class="reveal py-8 px-4 text-center">
           <div class="font-black text-3xl sm:text-4xl text-brand counter" data-target="60" data-suffix="+">0</div>
-          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">a&ntilde;os en ruta</div>
+          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium" data-i18n="stats.years">a&ntilde;os en ruta</div>
         </div>
         <div class="reveal d-1 py-8 px-4 text-center">
           <div class="font-black text-3xl sm:text-4xl text-brand counter" data-target="300" data-suffix="K&euro;">0</div>
-          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">seguro mercanc&iacute;as</div>
+          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium" data-i18n="stats.insurance">seguro mercanc&iacute;as</div>
         </div>
         <div class="reveal d-2 py-8 px-4 text-center">
           <div class="font-black text-3xl sm:text-4xl text-brand">24/7</div>
-          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">GPS en tiempo real</div>
+          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium" data-i18n="stats.gps">GPS en tiempo real</div>
         </div>
         <div class="reveal d-3 py-8 px-4 text-center">
           <div class="font-black text-3xl sm:text-4xl text-brand counter" data-target="30" data-suffix="+">0</div>
-          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">pa&iacute;ses cubiertos</div>
+          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium" data-i18n="stats.countries">pa&iacute;ses cubiertos</div>
         </div>
       </div>
     </div>
@@ -380,11 +380,11 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-5 reveal">
-          <span class="text-brand-light font-semibold text-sm uppercase tracking-widest accent-line">Nuestra misi&oacute;n</span>
-          <h2 class="mt-5 font-black text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight">
+          <span class="text-brand-light font-semibold text-sm uppercase tracking-widest accent-line" data-i18n="mission.eyebrow">Nuestra misi&oacute;n</span>
+          <h2 class="mt-5 font-black text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight" data-i18n-html="mission.title">
             Que los camiones lleguen <span class="text-brand">puntuales a todos los destinos</span>.
           </h2>
-          <p class="mt-5 text-lg text-slate-600 leading-relaxed">
+          <p class="mt-5 text-lg text-slate-600 leading-relaxed" data-i18n="mission.desc">
             Somos una empresa comprometida con la puntualidad, la seguridad de tu carga y la evoluci&oacute;n tecnol&oacute;gica de nuestra flota. Tres pilares que hemos cultivado desde los a&ntilde;os 60.
           </p>
         </div>
@@ -394,16 +394,16 @@
             <div class="w-11 h-11 bg-white/10 rounded-lg flex items-center justify-center mb-5">
               <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </div>
-            <h3 class="font-bold text-lg">Puntualidad</h3>
-            <p class="mt-2 text-white/70 text-sm leading-relaxed">Nuestros camiones llegan puntuales a todos los destinos. Lo hemos hecho siempre. Lo seguiremos haciendo.</p>
+            <h3 class="font-bold text-lg" data-i18n="pillar.punctual.title">Puntualidad</h3>
+            <p class="mt-2 text-white/70 text-sm leading-relaxed" data-i18n="pillar.punctual.desc">Nuestros camiones llegan puntuales a todos los destinos. Lo hemos hecho siempre. Lo seguiremos haciendo.</p>
           </div>
 
           <div class="reveal d-1 tilt bg-white border border-slate-200 p-7 rounded-2xl cursor-pointer">
             <div class="w-11 h-11 bg-brand/5 rounded-lg flex items-center justify-center mb-5">
               <svg class="w-6 h-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
             </div>
-            <h3 class="font-bold text-lg text-ink">Seguro</h3>
-            <p class="mt-2 text-slate-600 text-sm leading-relaxed">Seguro de mercanc&iacute;as de hasta <b>300.000&euro;</b> y seguro de responsabilidad civil de hasta <b>600.000&euro;</b>.</p>
+            <h3 class="font-bold text-lg text-ink" data-i18n="pillar.insurance.title">Seguro</h3>
+            <p class="mt-2 text-slate-600 text-sm leading-relaxed" data-i18n-html="pillar.insurance.desc">Seguro de mercanc&iacute;as de hasta <b>300.000&euro;</b> y seguro de responsabilidad civil de hasta <b>600.000&euro;</b>.</p>
           </div>
 
           <div class="reveal d-2 tilt bg-white border border-slate-200 p-7 rounded-2xl cursor-pointer sm:col-span-2">
@@ -412,8 +412,8 @@
                 <svg class="w-6 h-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
               </div>
               <div>
-                <h3 class="font-bold text-lg text-ink">Equipamiento</h3>
-                <p class="mt-2 text-slate-600 text-sm leading-relaxed">Nuestra flota de veh&iacute;culos va equipada con las mejores y m&aacute;s modernas tecnolog&iacute;as. Posicionador GPS con acceso online para el cliente, informes de ruta detallados y veh&iacute;culos articulados de &uacute;ltima generaci&oacute;n.</p>
+                <h3 class="font-bold text-lg text-ink" data-i18n="pillar.equip.title">Equipamiento</h3>
+                <p class="mt-2 text-slate-600 text-sm leading-relaxed" data-i18n="pillar.equip.desc">Nuestra flota de veh&iacute;culos va equipada con las mejores y m&aacute;s modernas tecnolog&iacute;as. Posicionador GPS con acceso online para el cliente, informes de ruta detallados y veh&iacute;culos articulados de &uacute;ltima generaci&oacute;n.</p>
               </div>
             </div>
           </div>
@@ -439,42 +439,42 @@
                 <div class="dot-pulse w-3 h-3 bg-green-500 rounded-full"></div>
               </div>
               <div>
-                <div class="text-xs font-bold text-ink">En ruta</div>
+                <div class="text-xs font-bold text-ink" data-i18n="badge.onroute">En ruta</div>
                 <div class="text-[10px] text-slate-500">Valencia &rarr; Mun&iacute;ch</div>
               </div>
             </div>
             <!-- Floating stats badge -->
             <div class="absolute bottom-4 right-4 bg-brand text-white rounded-lg px-4 py-3 shadow-xl">
               <div class="text-2xl font-black counter" data-target="1847" data-suffix="">0</div>
-              <div class="text-[10px] uppercase tracking-wider text-white/70">km recorridos hoy</div>
+              <div class="text-[10px] uppercase tracking-wider text-white/70" data-i18n="badge.km">km recorridos hoy</div>
             </div>
           </div>
         </div>
 
         <div class="reveal d-1 order-1 lg:order-2">
-          <span class="text-brand-accent font-semibold text-sm uppercase tracking-widest accent-line">Nuestra flota</span>
-          <h2 class="mt-5 font-black text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+          <span class="text-brand-accent font-semibold text-sm uppercase tracking-widest accent-line" data-i18n="fleet.eyebrow">Nuestra flota</span>
+          <h2 class="mt-5 font-black text-3xl sm:text-4xl lg:text-5xl text-white leading-tight" data-i18n-html="fleet.title">
             Camiones DAF equipados con <span class="text-brand-accent">tecnolog&iacute;a de &uacute;ltima generaci&oacute;n</span>.
           </h2>
-          <p class="mt-5 text-lg text-white/70 leading-relaxed">
+          <p class="mt-5 text-lg text-white/70 leading-relaxed" data-i18n="fleet.desc">
             Cada veh&iacute;culo de nuestra flota est&aacute; equipado con posicionador GPS para que puedas visualizar online, en todo momento, la ruta por la cual viaja tu mercanc&iacute;a.
           </p>
 
           <div class="mt-8 grid grid-cols-2 gap-4">
             <div class="border-l-2 border-brand-light pl-4">
-              <div class="text-white font-bold text-lg">GPS en vivo</div>
-              <div class="text-white/50 text-sm mt-0.5">Acceso online 24/7</div>
+              <div class="text-white font-bold text-lg" data-i18n="fleet.f1.title">GPS en vivo</div>
+              <div class="text-white/50 text-sm mt-0.5" data-i18n="fleet.f1.desc">Acceso online 24/7</div>
             </div>
             <div class="border-l-2 border-brand-light pl-4">
-              <div class="text-white font-bold text-lg">Informes de ruta</div>
-              <div class="text-white/50 text-sm mt-0.5">D&oacute;nde, cu&aacute;ndo, c&oacute;mo</div>
+              <div class="text-white font-bold text-lg" data-i18n="fleet.f2.title">Informes de ruta</div>
+              <div class="text-white/50 text-sm mt-0.5" data-i18n="fleet.f2.desc">D&oacute;nde, cu&aacute;ndo, c&oacute;mo</div>
             </div>
             <div class="border-l-2 border-brand-light pl-4">
-              <div class="text-white font-bold text-lg">Veh&iacute;culos articulados</div>
-              <div class="text-white/50 text-sm mt-0.5">&Uacute;ltima generaci&oacute;n</div>
+              <div class="text-white font-bold text-lg" data-i18n="fleet.f3.title">Veh&iacute;culos articulados</div>
+              <div class="text-white/50 text-sm mt-0.5" data-i18n="fleet.f3.desc">&Uacute;ltima generaci&oacute;n</div>
             </div>
             <div class="border-l-2 border-brand-light pl-4">
-              <div class="text-white font-bold text-lg">Doble seguro</div>
+              <div class="text-white font-bold text-lg" data-i18n="fleet.f4.title">Doble seguro</div>
               <div class="text-white/50 text-sm mt-0.5">300K&euro; + 600K&euro;</div>
             </div>
           </div>
@@ -488,8 +488,8 @@
   <section class="py-20 sm:py-28 bg-bone">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl mb-14">
-        <span class="text-brand-light font-semibold text-sm uppercase tracking-widest accent-line reveal">Log&iacute;stica integral</span>
-        <h2 class="reveal d-1 mt-5 font-black text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight">
+        <span class="text-brand-light font-semibold text-sm uppercase tracking-widest accent-line reveal" data-i18n="srv.eyebrow">Log&iacute;stica integral</span>
+        <h2 class="reveal d-1 mt-5 font-black text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight" data-i18n="srv.title">
           Todo lo que necesitas, bajo un solo techo.
         </h2>
       </div>
@@ -499,48 +499,48 @@
           <div class="w-11 h-11 bg-brand/5 rounded-lg flex items-center justify-center mb-5">
             <svg class="w-6 h-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
           </div>
-          <h3 class="font-bold text-lg text-ink">Recogida y reparto</h3>
-          <p class="mt-2 text-slate-600 text-sm">Recogemos y trasladamos las cargas de forma &aacute;gil y segura.</p>
+          <h3 class="font-bold text-lg text-ink" data-i18n="srv.c1.title">Recogida y reparto</h3>
+          <p class="mt-2 text-slate-600 text-sm" data-i18n="srv.c1.desc">Recogemos y trasladamos las cargas de forma &aacute;gil y segura.</p>
         </div>
 
         <div class="reveal d-1 tilt bg-white border border-slate-200 p-7 rounded-2xl cursor-pointer">
           <div class="w-11 h-11 bg-brand/5 rounded-lg flex items-center justify-center mb-5">
             <svg class="w-6 h-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
           </div>
-          <h3 class="font-bold text-lg text-ink">Calidad garantizada</h3>
-          <p class="mt-2 text-slate-600 text-sm">Garantizamos una alta calidad en el cuidado de la carga.</p>
+          <h3 class="font-bold text-lg text-ink" data-i18n="srv.c2.title">Calidad garantizada</h3>
+          <p class="mt-2 text-slate-600 text-sm" data-i18n="srv.c2.desc">Garantizamos una alta calidad en el cuidado de la carga.</p>
         </div>
 
         <div class="reveal d-2 tilt bg-white border border-slate-200 p-7 rounded-2xl cursor-pointer">
           <div class="w-11 h-11 bg-brand/5 rounded-lg flex items-center justify-center mb-5">
             <svg class="w-6 h-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m-12 5h12m-12 5h12M4 7h.01M4 12h.01M4 17h.01"/></svg>
           </div>
-          <h3 class="font-bold text-lg text-ink">Acarreos</h3>
-          <p class="mt-2 text-slate-600 text-sm">Acarreamos tu mercanc&iacute;a cubriendo los imprevistos del trayecto.</p>
+          <h3 class="font-bold text-lg text-ink" data-i18n="srv.c3.title">Acarreos</h3>
+          <p class="mt-2 text-slate-600 text-sm" data-i18n="srv.c3.desc">Acarreamos tu mercanc&iacute;a cubriendo los imprevistos del trayecto.</p>
         </div>
 
         <div class="reveal tilt bg-white border border-slate-200 p-7 rounded-2xl cursor-pointer">
           <div class="w-11 h-11 bg-brand/5 rounded-lg flex items-center justify-center mb-5">
             <svg class="w-6 h-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
           </div>
-          <h3 class="font-bold text-lg text-ink">Carga y descarga de palets</h3>
-          <p class="mt-2 text-slate-600 text-sm">Nos encargamos de la carga y descarga con total garant&iacute;a.</p>
+          <h3 class="font-bold text-lg text-ink" data-i18n="srv.c4.title">Carga y descarga de palets</h3>
+          <p class="mt-2 text-slate-600 text-sm" data-i18n="srv.c4.desc">Nos encargamos de la carga y descarga con total garant&iacute;a.</p>
         </div>
 
         <div class="reveal d-1 tilt bg-white border border-slate-200 p-7 rounded-2xl cursor-pointer">
           <div class="w-11 h-11 bg-brand/5 rounded-lg flex items-center justify-center mb-5">
             <svg class="w-6 h-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
           </div>
-          <h3 class="font-bold text-lg text-ink">Almacenaje y distribuci&oacute;n</h3>
-          <p class="mt-2 text-slate-600 text-sm">Almacenamos la mercanc&iacute;a hasta el momento &oacute;ptimo de su distribuci&oacute;n.</p>
+          <h3 class="font-bold text-lg text-ink" data-i18n="srv.c5.title">Almacenaje y distribuci&oacute;n</h3>
+          <p class="mt-2 text-slate-600 text-sm" data-i18n="srv.c5.desc">Almacenamos la mercanc&iacute;a hasta el momento &oacute;ptimo de su distribuci&oacute;n.</p>
         </div>
 
         <div class="reveal d-2 tilt bg-brand text-white p-7 rounded-2xl cursor-pointer">
           <div class="w-11 h-11 bg-white/10 rounded-lg flex items-center justify-center mb-5">
             <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           </div>
-          <h3 class="font-bold text-lg">Seguimiento GPS</h3>
-          <p class="mt-2 text-white/70 text-sm">Tenemos un seguimiento en tiempo real de cada camion. Acceso online para el cliente.</p>
+          <h3 class="font-bold text-lg" data-i18n="srv.c6.title">Seguimiento GPS</h3>
+          <p class="mt-2 text-white/70 text-sm" data-i18n="srv.c6.desc">Tenemos un seguimiento en tiempo real de cada camion. Acceso online para el cliente.</p>
         </div>
       </div>
     </div>
@@ -551,8 +551,8 @@
   <section id="trabajos" class="py-20 sm:py-28 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl mb-14">
-        <span class="text-brand-light font-semibold text-sm uppercase tracking-widest accent-line reveal">&Uacute;ltimos trabajos</span>
-        <h2 class="reveal d-1 mt-5 font-black text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight">
+        <span class="text-brand-light font-semibold text-sm uppercase tracking-widest accent-line reveal" data-i18n="work.eyebrow">&Uacute;ltimos trabajos</span>
+        <h2 class="reveal d-1 mt-5 font-black text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight" data-i18n="work.title">
           Algunos de los trabajos que hemos realizado alrededor de Europa.
         </h2>
       </div>
@@ -587,19 +587,19 @@
         </div>
 
         <div class="reveal col-span-12 md:col-span-8 bg-gradient-to-br from-brand to-brand-dark rounded-xl p-8 sm:p-10 text-white flex flex-col justify-center">
-          <div class="text-xs uppercase tracking-widest text-brand-accent font-semibold">Qu&eacute; transportamos</div>
-          <h3 class="font-black text-2xl sm:text-3xl mt-2 leading-tight">
+          <div class="text-xs uppercase tracking-widest text-brand-accent font-semibold" data-i18n="cargo.eyebrow">Qu&eacute; transportamos</div>
+          <h3 class="font-black text-2xl sm:text-3xl mt-2 leading-tight" data-i18n="cargo.title">
             Mercanc&iacute;a general y perecedera por toda Europa.
           </h3>
           <div class="mt-6 flex flex-wrap gap-2">
-            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Productos manufacturados</span>
-            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Materias primas</span>
-            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Productos l&aacute;cteos</span>
-            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Material de construcci&oacute;n</span>
-            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Env&iacute;os internacionales</span>
-            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Productos textiles</span>
-            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Productos agr&iacute;colas</span>
-            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Productos metal&uacute;rgicos</span>
+            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5" data-i18n="cargo.t1">Productos manufacturados</span>
+            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5" data-i18n="cargo.t2">Materias primas</span>
+            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5" data-i18n="cargo.t3">Productos l&aacute;cteos</span>
+            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5" data-i18n="cargo.t4">Material de construcci&oacute;n</span>
+            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5" data-i18n="cargo.t5">Env&iacute;os internacionales</span>
+            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5" data-i18n="cargo.t6">Productos textiles</span>
+            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5" data-i18n="cargo.t7">Productos agr&iacute;colas</span>
+            <span class="text-xs bg-white/10 border border-white/20 rounded-full px-3 py-1.5" data-i18n="cargo.t8">Productos metal&uacute;rgicos</span>
           </div>
         </div>
       </div>
@@ -611,11 +611,11 @@
   <section id="historia" class="py-20 sm:py-28 bg-bone">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <span class="reveal text-brand-light font-semibold text-sm uppercase tracking-widest">Desde 1960</span>
-        <h2 class="reveal d-1 mt-4 font-black text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight">
+        <span class="reveal text-brand-light font-semibold text-sm uppercase tracking-widest" data-i18n="hist.eyebrow">Desde 1960</span>
+        <h2 class="reveal d-1 mt-4 font-black text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight" data-i18n="hist.title">
           Tres generaciones sobre la carretera.
         </h2>
-        <p class="reveal d-2 mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
+        <p class="reveal d-2 mt-4 text-lg text-slate-600 max-w-2xl mx-auto" data-i18n="hist.desc">
           Empresa joven y din&aacute;mica con una amplia experiencia familiar que se remonta a los a&ntilde;os 60.
         </p>
       </div>
@@ -628,8 +628,8 @@
         <div class="reveal relative flex flex-col md:flex-row md:items-center mb-12 md:mb-16">
           <div class="md:w-1/2 md:pr-12 md:text-right pl-12 md:pl-0">
             <div class="text-brand-light font-bold text-sm">1960s</div>
-            <h3 class="font-bold text-xl text-ink mt-1">El primer cami&oacute;n</h3>
-            <p class="mt-2 text-slate-600">Salvador G&oacute;mez Cucarella empieza con un peque&ntilde;o cami&oacute;n haciendo ruta nacional por toda Espa&ntilde;a transportando toda clase de mercanc&iacute;a.</p>
+            <h3 class="font-bold text-xl text-ink mt-1" data-i18n="hist.m1.title">El primer cami&oacute;n</h3>
+            <p class="mt-2 text-slate-600" data-i18n="hist.m1.desc">Salvador G&oacute;mez Cucarella empieza con un peque&ntilde;o cami&oacute;n haciendo ruta nacional por toda Espa&ntilde;a transportando toda clase de mercanc&iacute;a.</p>
           </div>
           <div class="milestone-dot absolute left-4 md:left-1/2 top-0 w-4 h-4 bg-brand-light rounded-full md:-translate-x-1/2 -translate-y-0 md:-translate-y-1/2 border-4 border-bone z-10"></div>
           <div class="md:w-1/2"></div>
@@ -641,17 +641,17 @@
           <div class="milestone-dot absolute left-4 md:left-1/2 top-0 w-4 h-4 bg-brand-light rounded-full md:-translate-x-1/2 border-4 border-bone z-10"></div>
           <div class="md:w-1/2 md:pl-12 pl-12">
             <div class="text-brand-light font-bold text-sm">1990s</div>
-            <h3 class="font-bold text-xl text-ink mt-1">La aventura familiar</h3>
-            <p class="mt-2 text-slate-600">&Oacute;scar G&oacute;mez Jim&eacute;nez se une junto a su padre. Adquieren el primer veh&iacute;culo articulado y empiezan a ganar terreno ofreciendo un servicio excelente.</p>
+            <h3 class="font-bold text-xl text-ink mt-1" data-i18n="hist.m2.title">La aventura familiar</h3>
+            <p class="mt-2 text-slate-600" data-i18n="hist.m2.desc">&Oacute;scar G&oacute;mez Jim&eacute;nez se une junto a su padre. Adquieren el primer veh&iacute;culo articulado y empiezan a ganar terreno ofreciendo un servicio excelente.</p>
           </div>
         </div>
 
         <!-- 2008 -->
         <div class="reveal relative flex flex-col md:flex-row md:items-center mb-12 md:mb-16">
           <div class="md:w-1/2 md:pr-12 md:text-right pl-12 md:pl-0">
-            <div class="text-brand font-bold text-sm">10 Enero 2008</div>
-            <h3 class="font-bold text-xl text-ink mt-1">Nace Bontransport, S.L.</h3>
-            <p class="mt-2 text-slate-600">Con esfuerzo y sacrificio se formaliza la empresa, cubriendo cada vez m&aacute;s necesidades de los clientes y manteniendo la din&aacute;mica familiar.</p>
+            <div class="text-brand font-bold text-sm" data-i18n="hist.m3.date">10 Enero 2008</div>
+            <h3 class="font-bold text-xl text-ink mt-1" data-i18n="hist.m3.title">Nace Bontransport, S.L.</h3>
+            <p class="mt-2 text-slate-600" data-i18n="hist.m3.desc">Con esfuerzo y sacrificio se formaliza la empresa, cubriendo cada vez m&aacute;s necesidades de los clientes y manteniendo la din&aacute;mica familiar.</p>
           </div>
           <div class="milestone-dot absolute left-4 md:left-1/2 top-0 w-5 h-5 bg-brand rounded-full md:-translate-x-1/2 border-4 border-bone z-10 ring-4 ring-brand/20"></div>
           <div class="md:w-1/2"></div>
@@ -662,9 +662,9 @@
           <div class="md:w-1/2"></div>
           <div class="milestone-dot absolute left-4 md:left-1/2 top-0 w-4 h-4 bg-green-500 rounded-full md:-translate-x-1/2 border-4 border-bone z-10"></div>
           <div class="md:w-1/2 md:pl-12 pl-12">
-            <div class="text-green-600 font-bold text-sm">Actualidad</div>
-            <h3 class="font-bold text-xl text-ink mt-1">Toda Europa y Suiza</h3>
-            <p class="mt-2 text-slate-600">Transportamos mercanc&iacute;a general y perecedera por toda Europa, consolid&aacute;ndonos como empresa de referencia en responsabilidad y respuesta de mercado.</p>
+            <div class="text-green-600 font-bold text-sm" data-i18n="hist.m4.date">Actualidad</div>
+            <h3 class="font-bold text-xl text-ink mt-1" data-i18n="hist.m4.title">Toda Europa y Suiza</h3>
+            <p class="mt-2 text-slate-600" data-i18n="hist.m4.desc">Transportamos mercanc&iacute;a general y perecedera por toda Europa, consolid&aacute;ndonos como empresa de referencia en responsabilidad y respuesta de mercado.</p>
           </div>
         </div>
       </div>
@@ -675,11 +675,11 @@
   <!-- ============ MOTTOS ============ -->
   <section class="py-20 bg-ink text-white relative overflow-hidden">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="reveal text-brand-accent font-semibold text-sm uppercase tracking-widest">Nuestros lemas</span>
-      <blockquote class="reveal d-1 mt-8 font-black text-2xl sm:text-3xl lg:text-4xl leading-[1.2] max-w-4xl mx-auto">
+      <span class="reveal text-brand-accent font-semibold text-sm uppercase tracking-widest" data-i18n="motto.eyebrow">Nuestros lemas</span>
+      <blockquote class="reveal d-1 mt-8 font-black text-2xl sm:text-3xl lg:text-4xl leading-[1.2] max-w-4xl mx-auto" data-i18n-html="motto.quote">
         &ldquo;Un cliente satisfecho es el resultado de un <span class="text-brand-accent">buen servicio de transporte</span>.&rdquo;
       </blockquote>
-      <div class="reveal d-2 mt-10 pt-10 border-t border-white/10 font-bold text-lg text-white/70">
+      <div class="reveal d-2 mt-10 pt-10 border-t border-white/10 font-bold text-lg text-white/70" data-i18n="motto.sub">
         La seriedad, la puntualidad y el buen hacer.
       </div>
     </div>
@@ -692,11 +692,11 @@
       <div class="grid lg:grid-cols-2 gap-12">
         <!-- Info -->
         <div>
-          <span class="reveal text-brand-light font-semibold text-sm uppercase tracking-widest accent-line">Contacto</span>
-          <h2 class="reveal d-1 mt-5 font-black text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight">
+          <span class="reveal text-brand-light font-semibold text-sm uppercase tracking-widest accent-line" data-i18n="contact.eyebrow">Contacto</span>
+          <h2 class="reveal d-1 mt-5 font-black text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight" data-i18n="contact.title">
             &iquest;Tienes una carga que mover?
           </h2>
-          <p class="reveal d-2 mt-4 text-lg text-slate-600">
+          <p class="reveal d-2 mt-4 text-lg text-slate-600" data-i18n="contact.desc">
             Cu&eacute;ntanos qu&eacute; necesitas. Te respondemos en menos de 24 horas con un presupuesto personalizado.
           </p>
 
@@ -707,7 +707,7 @@
               </div>
               <div>
                 <div class="font-bold text-ink">962 97 83 40</div>
-                <div class="text-sm text-slate-500">Llama a cualquier hora</div>
+                <div class="text-sm text-slate-500" data-i18n="contact.phoneSub">Llama a cualquier hora</div>
               </div>
             </a>
 
@@ -717,7 +717,7 @@
               </div>
               <div>
                 <div class="font-bold text-ink">info@bontransport.com</div>
-                <div class="text-sm text-slate-500">Cualquier duda a este correo</div>
+                <div class="text-sm text-slate-500" data-i18n="contact.mailSub">Cualquier duda a este correo</div>
               </div>
             </a>
 
@@ -734,7 +734,7 @@
 
           <!-- Social -->
           <div class="reveal mt-10 pt-8 border-t border-slate-100">
-            <div class="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-4">S&iacute;guenos</div>
+            <div class="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-4" data-i18n="contact.follow">S&iacute;guenos</div>
             <div class="flex gap-2">
               <a href="https://www.facebook.com/bontransportsl/" target="_blank" rel="noopener" class="w-10 h-10 bg-slate-100 hover:bg-brand hover:text-white rounded-lg flex items-center justify-center text-slate-600 transition-colors cursor-pointer" aria-label="Facebook">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -758,27 +758,27 @@
         <!-- Form -->
         <div class="reveal d-2">
           <div class="bg-bone rounded-2xl p-8 border border-slate-100">
-            <h3 class="font-bold text-xl text-ink mb-6">Ponerse en contacto</h3>
+            <h3 class="font-bold text-xl text-ink mb-6" data-i18n="form.title">Ponerse en contacto</h3>
             <form onsubmit="return false;" class="space-y-4">
               <div>
-                <label for="name" class="block text-sm font-semibold text-ink mb-1.5">Nombre</label>
-                <input id="name" type="text" placeholder="Tu nombre" class="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-light/30 focus:border-brand-light transition-all">
+                <label for="name" class="block text-sm font-semibold text-ink mb-1.5" data-i18n="form.name">Nombre</label>
+                <input id="name" type="text" data-i18n-ph="form.namePh" placeholder="Tu nombre" class="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-light/30 focus:border-brand-light transition-all">
               </div>
               <div class="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label for="email" class="block text-sm font-semibold text-ink mb-1.5">Gmail</label>
+                  <label for="email" class="block text-sm font-semibold text-ink mb-1.5" data-i18n="form.email">Email</label>
                   <input id="email" type="email" placeholder="tu@email.com" class="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-light/30 focus:border-brand-light transition-all">
                 </div>
                 <div>
-                  <label for="phone" class="block text-sm font-semibold text-ink mb-1.5">Tel&eacute;fono</label>
+                  <label for="phone" class="block text-sm font-semibold text-ink mb-1.5" data-i18n="form.phone">Tel&eacute;fono</label>
                   <input id="phone" type="tel" placeholder="+34 ..." class="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-light/30 focus:border-brand-light transition-all">
                 </div>
               </div>
               <div>
-                <label for="message" class="block text-sm font-semibold text-ink mb-1.5">Mensaje</label>
-                <textarea id="message" rows="4" placeholder="Cu&eacute;ntanos tu necesidad..." class="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-light/30 focus:border-brand-light transition-all resize-none"></textarea>
+                <label for="message" class="block text-sm font-semibold text-ink mb-1.5" data-i18n="form.message">Mensaje</label>
+                <textarea id="message" rows="4" data-i18n-ph="form.messagePh" placeholder="Cu&eacute;ntanos tu necesidad..." class="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-light/30 focus:border-brand-light transition-all resize-none"></textarea>
               </div>
-              <button type="submit" class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-3.5 rounded-lg transition-colors cursor-pointer shadow-lg shadow-brand/20">
+              <button type="submit" data-i18n="form.send" class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-3.5 rounded-lg transition-colors cursor-pointer shadow-lg shadow-brand/20">
                 Enviar
               </button>
             </form>
@@ -802,21 +802,21 @@
             </span>
             <span class="font-black text-xl tracking-tight text-white" style="letter-spacing: -0.02em;">BONTRANSPORT</span>
           </div>
-          <p class="text-sm text-white/50 leading-relaxed">Transporte internacional desde Corbera, Valencia. Desde los a&ntilde;os 60.</p>
+          <p class="text-sm text-white/50 leading-relaxed" data-i18n="footer.tagline">Transporte internacional desde Corbera, Valencia. Desde los a&ntilde;os 60.</p>
         </div>
 
         <div>
-          <div class="text-xs uppercase tracking-widest text-white/40 font-semibold mb-4">Navegaci&oacute;n</div>
+          <div class="text-xs uppercase tracking-widest text-white/40 font-semibold mb-4" data-i18n="footer.nav">Navegaci&oacute;n</div>
           <ul class="space-y-2 text-sm">
-            <li><a href="#top" class="text-white/70 hover:text-brand-accent cursor-pointer transition-colors">Inicio</a></li>
-            <li><a href="#servicios" class="text-white/70 hover:text-brand-accent cursor-pointer transition-colors">Servicios</a></li>
-            <li><a href="#flota" class="text-white/70 hover:text-brand-accent cursor-pointer transition-colors">Flota</a></li>
-            <li><a href="#historia" class="text-white/70 hover:text-brand-accent cursor-pointer transition-colors">Historia</a></li>
+            <li><a href="#top" class="text-white/70 hover:text-brand-accent cursor-pointer transition-colors" data-i18n="footer.home">Inicio</a></li>
+            <li><a href="#servicios" class="text-white/70 hover:text-brand-accent cursor-pointer transition-colors" data-i18n="nav.services">Servicios</a></li>
+            <li><a href="#flota" class="text-white/70 hover:text-brand-accent cursor-pointer transition-colors" data-i18n="nav.fleet">Flota</a></li>
+            <li><a href="#historia" class="text-white/70 hover:text-brand-accent cursor-pointer transition-colors" data-i18n="nav.history">Historia</a></li>
           </ul>
         </div>
 
         <div>
-          <div class="text-xs uppercase tracking-widest text-white/40 font-semibold mb-4">Contacto</div>
+          <div class="text-xs uppercase tracking-widest text-white/40 font-semibold mb-4" data-i18n="nav.contact">Contacto</div>
           <ul class="space-y-2 text-sm">
             <li><a href="tel:+34962978340" class="text-white/70 hover:text-brand-accent cursor-pointer transition-colors">962 97 83 40</a></li>
             <li><a href="mailto:info@bontransport.com" class="text-white/70 hover:text-brand-accent cursor-pointer transition-colors">info@bontransport.com</a></li>
@@ -826,7 +826,7 @@
         </div>
 
         <div>
-          <div class="text-xs uppercase tracking-widest text-white/40 font-semibold mb-4">Redes</div>
+          <div class="text-xs uppercase tracking-widest text-white/40 font-semibold mb-4" data-i18n="footer.social">Redes</div>
           <div class="flex gap-2">
             <a href="https://www.facebook.com/bontransportsl/" target="_blank" rel="noopener" class="w-9 h-9 bg-white/5 hover:bg-brand-light rounded-lg flex items-center justify-center cursor-pointer transition-colors" aria-label="Facebook">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -842,8 +842,8 @@
       </div>
 
       <div class="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/40">
-        <div>&copy; 2026 Bontransport, S.L. Todos los derechos reservados.</div>
-        <div>Transporte internacional desde Valencia</div>
+        <div data-i18n="footer.copy">&copy; 2026 Bontransport, S.L. Todos los derechos reservados.</div>
+        <div data-i18n="footer.subtag">Transporte internacional desde Valencia</div>
       </div>
     </div>
   </footer>
@@ -851,6 +851,339 @@
 
   <!-- ============ SCRIPTS ============ -->
   <script>
+    // ========== i18n ==========
+    const I18N = {
+      es: {
+        'nav.services': 'Servicios',
+        'nav.fleet': 'Flota',
+        'nav.work': 'Trabajos',
+        'nav.history': 'Historia',
+        'nav.contact': 'Contacto',
+        'nav.quote': 'Presupuesto',
+        'nav.language': 'Idioma',
+        'cta.quote': 'Solicitar presupuesto',
+        'hero.badge': 'Desde Corbera, Valencia \u2022 Toda Europa',
+        'hero.title': 'Transporte internacional<br><span class="text-brand-accent">con el compromiso</span> de una<br>empresa familiar.',
+        'hero.subtitle': 'Llevamos tu mercanc\u00EDa a cualquier punto de Europa y Suiza con la puntualidad, seguridad y experiencia que nos avalan desde los a\u00F1os 60.',
+        'stats.years': 'a\u00F1os en ruta',
+        'stats.insurance': 'seguro mercanc\u00EDas',
+        'stats.gps': 'GPS en tiempo real',
+        'stats.countries': 'pa\u00EDses cubiertos',
+        'mission.eyebrow': 'Nuestra misi\u00F3n',
+        'mission.title': 'Que los camiones lleguen <span class="text-brand">puntuales a todos los destinos</span>.',
+        'mission.desc': 'Somos una empresa comprometida con la puntualidad, la seguridad de tu carga y la evoluci\u00F3n tecnol\u00F3gica de nuestra flota. Tres pilares que hemos cultivado desde los a\u00F1os 60.',
+        'pillar.punctual.title': 'Puntualidad',
+        'pillar.punctual.desc': 'Nuestros camiones llegan puntuales a todos los destinos. Lo hemos hecho siempre. Lo seguiremos haciendo.',
+        'pillar.insurance.title': 'Seguro',
+        'pillar.insurance.desc': 'Seguro de mercanc\u00EDas de hasta <b>300.000\u20AC</b> y seguro de responsabilidad civil de hasta <b>600.000\u20AC</b>.',
+        'pillar.equip.title': 'Equipamiento',
+        'pillar.equip.desc': 'Nuestra flota de veh\u00EDculos va equipada con las mejores y m\u00E1s modernas tecnolog\u00EDas. Posicionador GPS con acceso online para el cliente, informes de ruta detallados y veh\u00EDculos articulados de \u00FAltima generaci\u00F3n.',
+        'badge.onroute': 'En ruta',
+        'badge.km': 'km recorridos hoy',
+        'fleet.eyebrow': 'Nuestra flota',
+        'fleet.title': 'Camiones DAF equipados con <span class="text-brand-accent">tecnolog\u00EDa de \u00FAltima generaci\u00F3n</span>.',
+        'fleet.desc': 'Cada veh\u00EDculo de nuestra flota est\u00E1 equipado con posicionador GPS para que puedas visualizar online, en todo momento, la ruta por la cual viaja tu mercanc\u00EDa.',
+        'fleet.f1.title': 'GPS en vivo',
+        'fleet.f1.desc': 'Acceso online 24/7',
+        'fleet.f2.title': 'Informes de ruta',
+        'fleet.f2.desc': 'D\u00F3nde, cu\u00E1ndo, c\u00F3mo',
+        'fleet.f3.title': 'Veh\u00EDculos articulados',
+        'fleet.f3.desc': '\u00DAltima generaci\u00F3n',
+        'fleet.f4.title': 'Doble seguro',
+        'srv.eyebrow': 'Log\u00EDstica integral',
+        'srv.title': 'Todo lo que necesitas, bajo un solo techo.',
+        'srv.c1.title': 'Recogida y reparto',
+        'srv.c1.desc': 'Recogemos y trasladamos las cargas de forma \u00E1gil y segura.',
+        'srv.c2.title': 'Calidad garantizada',
+        'srv.c2.desc': 'Garantizamos una alta calidad en el cuidado de la carga.',
+        'srv.c3.title': 'Acarreos',
+        'srv.c3.desc': 'Acarreamos tu mercanc\u00EDa cubriendo los imprevistos del trayecto.',
+        'srv.c4.title': 'Carga y descarga de palets',
+        'srv.c4.desc': 'Nos encargamos de la carga y descarga con total garant\u00EDa.',
+        'srv.c5.title': 'Almacenaje y distribuci\u00F3n',
+        'srv.c5.desc': 'Almacenamos la mercanc\u00EDa hasta el momento \u00F3ptimo de su distribuci\u00F3n.',
+        'srv.c6.title': 'Seguimiento GPS',
+        'srv.c6.desc': 'Tenemos un seguimiento en tiempo real de cada cami\u00F3n. Acceso online para el cliente.',
+        'work.eyebrow': '\u00DAltimos trabajos',
+        'work.title': 'Algunos de los trabajos que hemos realizado alrededor de Europa.',
+        'cargo.eyebrow': 'Qu\u00E9 transportamos',
+        'cargo.title': 'Mercanc\u00EDa general y perecedera por toda Europa.',
+        'cargo.t1': 'Productos manufacturados', 'cargo.t2': 'Materias primas', 'cargo.t3': 'Productos l\u00E1cteos', 'cargo.t4': 'Material de construcci\u00F3n',
+        'cargo.t5': 'Env\u00EDos internacionales', 'cargo.t6': 'Productos textiles', 'cargo.t7': 'Productos agr\u00EDcolas', 'cargo.t8': 'Productos metal\u00FArgicos',
+        'hist.eyebrow': 'Desde 1960',
+        'hist.title': 'Tres generaciones sobre la carretera.',
+        'hist.desc': 'Empresa joven y din\u00E1mica con una amplia experiencia familiar que se remonta a los a\u00F1os 60.',
+        'hist.m1.title': 'El primer cami\u00F3n',
+        'hist.m1.desc': 'Salvador G\u00F3mez Cucarella empieza con un peque\u00F1o cami\u00F3n haciendo ruta nacional por toda Espa\u00F1a transportando toda clase de mercanc\u00EDa.',
+        'hist.m2.title': 'La aventura familiar',
+        'hist.m2.desc': '\u00D3scar G\u00F3mez Jim\u00E9nez se une junto a su padre. Adquieren el primer veh\u00EDculo articulado y empiezan a ganar terreno ofreciendo un servicio excelente.',
+        'hist.m3.date': '10 Enero 2008',
+        'hist.m3.title': 'Nace Bontransport, S.L.',
+        'hist.m3.desc': 'Con esfuerzo y sacrificio se formaliza la empresa, cubriendo cada vez m\u00E1s necesidades de los clientes y manteniendo la din\u00E1mica familiar.',
+        'hist.m4.date': 'Actualidad',
+        'hist.m4.title': 'Toda Europa y Suiza',
+        'hist.m4.desc': 'Transportamos mercanc\u00EDa general y perecedera por toda Europa, consolid\u00E1ndonos como empresa de referencia en responsabilidad y respuesta de mercado.',
+        'motto.eyebrow': 'Nuestros lemas',
+        'motto.quote': '\u201CUn cliente satisfecho es el resultado de un <span class="text-brand-accent">buen servicio de transporte</span>.\u201D',
+        'motto.sub': 'La seriedad, la puntualidad y el buen hacer.',
+        'contact.eyebrow': 'Contacto',
+        'contact.title': '\u00BFTienes una carga que mover?',
+        'contact.desc': 'Cu\u00E9ntanos qu\u00E9 necesitas. Te respondemos en menos de 24 horas con un presupuesto personalizado.',
+        'contact.phoneSub': 'Llama a cualquier hora',
+        'contact.mailSub': 'Cualquier duda a este correo',
+        'contact.follow': 'S\u00EDguenos',
+        'form.title': 'Ponerse en contacto',
+        'form.name': 'Nombre', 'form.namePh': 'Tu nombre',
+        'form.email': 'Email',
+        'form.phone': 'Tel\u00E9fono',
+        'form.message': 'Mensaje', 'form.messagePh': 'Cu\u00E9ntanos tu necesidad...',
+        'form.send': 'Enviar',
+        'footer.tagline': 'Transporte internacional desde Corbera, Valencia. Desde los a\u00F1os 60.',
+        'footer.nav': 'Navegaci\u00F3n',
+        'footer.home': 'Inicio',
+        'footer.social': 'Redes',
+        'footer.copy': '\u00A9 2026 Bontransport, S.L. Todos los derechos reservados.',
+        'footer.subtag': 'Transporte internacional desde Valencia',
+      },
+      en: {
+        'nav.services': 'Services',
+        'nav.fleet': 'Fleet',
+        'nav.work': 'Projects',
+        'nav.history': 'History',
+        'nav.contact': 'Contact',
+        'nav.quote': 'Quote',
+        'nav.language': 'Language',
+        'cta.quote': 'Request a quote',
+        'hero.badge': 'From Corbera, Valencia \u2022 All of Europe',
+        'hero.title': 'International freight<br><span class="text-brand-accent">with the commitment</span> of a<br>family business.',
+        'hero.subtitle': 'We move your cargo to any point in Europe and Switzerland with the punctuality, safety and experience that back us since the 1960s.',
+        'stats.years': 'years on the road',
+        'stats.insurance': 'cargo insurance',
+        'stats.gps': 'real-time GPS',
+        'stats.countries': 'countries covered',
+        'mission.eyebrow': 'Our mission',
+        'mission.title': 'Trucks that arrive <span class="text-brand">on time, every time</span>.',
+        'mission.desc': 'A company committed to punctuality, the safety of your cargo and the technological evolution of our fleet. Three pillars we\'ve cultivated since the 1960s.',
+        'pillar.punctual.title': 'Punctuality',
+        'pillar.punctual.desc': 'Our trucks arrive on time at every destination. We\'ve always done it. We will keep doing it.',
+        'pillar.insurance.title': 'Insurance',
+        'pillar.insurance.desc': 'Cargo insurance up to <b>\u20AC300,000</b> and civil liability insurance up to <b>\u20AC600,000</b>.',
+        'pillar.equip.title': 'Equipment',
+        'pillar.equip.desc': 'Our fleet is equipped with the best and most modern technology. GPS tracker with online access for the client, detailed route reports and latest-generation articulated vehicles.',
+        'badge.onroute': 'On route',
+        'badge.km': 'km driven today',
+        'fleet.eyebrow': 'Our fleet',
+        'fleet.title': 'DAF trucks equipped with <span class="text-brand-accent">latest-generation technology</span>.',
+        'fleet.desc': 'Every vehicle in our fleet is equipped with a GPS tracker so you can view online, at any moment, the route your cargo is taking.',
+        'fleet.f1.title': 'Live GPS',
+        'fleet.f1.desc': 'Online access 24/7',
+        'fleet.f2.title': 'Route reports',
+        'fleet.f2.desc': 'Where, when, how',
+        'fleet.f3.title': 'Articulated vehicles',
+        'fleet.f3.desc': 'Latest generation',
+        'fleet.f4.title': 'Double insurance',
+        'srv.eyebrow': 'Complete logistics',
+        'srv.title': 'Everything you need, under one roof.',
+        'srv.c1.title': 'Pickup & delivery',
+        'srv.c1.desc': 'We pick up and move your cargo quickly and safely.',
+        'srv.c2.title': 'Guaranteed quality',
+        'srv.c2.desc': 'We guarantee the highest quality of care for your cargo.',
+        'srv.c3.title': 'Haulage',
+        'srv.c3.desc': 'We handle your cargo covering any unforeseen events on the route.',
+        'srv.c4.title': 'Pallet loading & unloading',
+        'srv.c4.desc': 'We handle loading and unloading with total guarantee.',
+        'srv.c5.title': 'Storage & distribution',
+        'srv.c5.desc': 'We store your cargo until the optimal distribution moment.',
+        'srv.c6.title': 'GPS tracking',
+        'srv.c6.desc': 'We have real-time tracking for every truck. Online access for the client.',
+        'work.eyebrow': 'Latest projects',
+        'work.title': 'Some of the work we\'ve done across Europe.',
+        'cargo.eyebrow': 'What we transport',
+        'cargo.title': 'General and perishable goods across Europe.',
+        'cargo.t1': 'Manufactured products', 'cargo.t2': 'Raw materials', 'cargo.t3': 'Dairy products', 'cargo.t4': 'Construction materials',
+        'cargo.t5': 'International shipments', 'cargo.t6': 'Textile products', 'cargo.t7': 'Agricultural products', 'cargo.t8': 'Metallurgical products',
+        'hist.eyebrow': 'Since 1960',
+        'hist.title': 'Three generations on the road.',
+        'hist.desc': 'A young and dynamic company with extensive family experience dating back to the 1960s.',
+        'hist.m1.title': 'The first truck',
+        'hist.m1.desc': 'Salvador G\u00F3mez Cucarella starts with a small truck running national routes across Spain carrying all kinds of goods.',
+        'hist.m2.title': 'The family adventure',
+        'hist.m2.desc': '\u00D3scar G\u00F3mez Jim\u00E9nez joins his father. They acquire their first articulated vehicle and start gaining ground with excellent service.',
+        'hist.m3.date': 'January 10, 2008',
+        'hist.m3.title': 'Bontransport, S.L. is born',
+        'hist.m3.desc': 'With effort and sacrifice the company is formalized, covering more and more client needs while keeping the family dynamic.',
+        'hist.m4.date': 'Today',
+        'hist.m4.title': 'All of Europe & Switzerland',
+        'hist.m4.desc': 'We transport general and perishable goods across Europe, consolidating our position as a reference in responsibility and market response.',
+        'motto.eyebrow': 'Our mottos',
+        'motto.quote': '\u201CA satisfied client is the result of a <span class="text-brand-accent">great transport service</span>.\u201D',
+        'motto.sub': 'Seriousness, punctuality and a job well done.',
+        'contact.eyebrow': 'Contact',
+        'contact.title': 'Got cargo to move?',
+        'contact.desc': 'Tell us what you need. We reply in under 24 hours with a personalized quote.',
+        'contact.phoneSub': 'Call us any time',
+        'contact.mailSub': 'Any question to this email',
+        'contact.follow': 'Follow us',
+        'form.title': 'Get in touch',
+        'form.name': 'Name', 'form.namePh': 'Your name',
+        'form.email': 'Email',
+        'form.phone': 'Phone',
+        'form.message': 'Message', 'form.messagePh': 'Tell us what you need...',
+        'form.send': 'Send',
+        'footer.tagline': 'International freight transport from Corbera, Valencia. Since the 1960s.',
+        'footer.nav': 'Navigation',
+        'footer.home': 'Home',
+        'footer.social': 'Social',
+        'footer.copy': '\u00A9 2026 Bontransport, S.L. All rights reserved.',
+        'footer.subtag': 'International freight from Valencia',
+      },
+      fr: {
+        'nav.services': 'Services',
+        'nav.fleet': 'Flotte',
+        'nav.work': 'Travaux',
+        'nav.history': 'Histoire',
+        'nav.contact': 'Contact',
+        'nav.quote': 'Devis',
+        'nav.language': 'Langue',
+        'cta.quote': 'Demander un devis',
+        'hero.badge': 'Depuis Corbera, Valence \u2022 Toute l\'Europe',
+        'hero.title': 'Transport international<br><span class="text-brand-accent">avec l\'engagement</span> d\'une<br>entreprise familiale.',
+        'hero.subtitle': 'Nous acheminons votre marchandise partout en Europe et en Suisse avec la ponctualit\u00E9, la s\u00E9curit\u00E9 et l\'exp\u00E9rience qui nous distinguent depuis les ann\u00E9es 60.',
+        'stats.years': 'ans sur la route',
+        'stats.insurance': 'assurance marchandises',
+        'stats.gps': 'GPS en temps r\u00E9el',
+        'stats.countries': 'pays couverts',
+        'mission.eyebrow': 'Notre mission',
+        'mission.title': 'Que les camions arrivent <span class="text-brand">ponctuellement \u00E0 toutes les destinations</span>.',
+        'mission.desc': 'Une entreprise engag\u00E9e pour la ponctualit\u00E9, la s\u00E9curit\u00E9 de votre cargaison et l\'\u00E9volution technologique de notre flotte. Trois piliers cultiv\u00E9s depuis les ann\u00E9es 60.',
+        'pillar.punctual.title': 'Ponctualit\u00E9',
+        'pillar.punctual.desc': 'Nos camions arrivent \u00E0 l\'heure \u00E0 toutes les destinations. Nous l\'avons toujours fait. Nous continuerons.',
+        'pillar.insurance.title': 'Assurance',
+        'pillar.insurance.desc': 'Assurance marchandises jusqu\'\u00E0 <b>300.000\u20AC</b> et responsabilit\u00E9 civile jusqu\'\u00E0 <b>600.000\u20AC</b>.',
+        'pillar.equip.title': '\u00C9quipement',
+        'pillar.equip.desc': 'Notre flotte est \u00E9quip\u00E9e des meilleures et plus modernes technologies. Traceur GPS avec acc\u00E8s en ligne pour le client, rapports d\'itin\u00E9raire d\u00E9taill\u00E9s et v\u00E9hicules articul\u00E9s de derni\u00E8re g\u00E9n\u00E9ration.',
+        'badge.onroute': 'En route',
+        'badge.km': 'km parcourus aujourd\'hui',
+        'fleet.eyebrow': 'Notre flotte',
+        'fleet.title': 'Camions DAF \u00E9quip\u00E9s de <span class="text-brand-accent">technologie de derni\u00E8re g\u00E9n\u00E9ration</span>.',
+        'fleet.desc': 'Chaque v\u00E9hicule de notre flotte est \u00E9quip\u00E9 d\'un traceur GPS pour que vous puissiez visualiser en ligne, \u00E0 tout moment, l\'itin\u00E9raire de votre marchandise.',
+        'fleet.f1.title': 'GPS en direct',
+        'fleet.f1.desc': 'Acc\u00E8s en ligne 24/7',
+        'fleet.f2.title': 'Rapports d\'itin\u00E9raire',
+        'fleet.f2.desc': 'O\u00F9, quand, comment',
+        'fleet.f3.title': 'V\u00E9hicules articul\u00E9s',
+        'fleet.f3.desc': 'Derni\u00E8re g\u00E9n\u00E9ration',
+        'fleet.f4.title': 'Double assurance',
+        'srv.eyebrow': 'Logistique int\u00E9gr\u00E9e',
+        'srv.title': 'Tout ce qu\'il vous faut, sous un seul toit.',
+        'srv.c1.title': 'Collecte et livraison',
+        'srv.c1.desc': 'Nous collectons et d\u00E9pla\u00E7ons vos cargaisons rapidement et en toute s\u00E9curit\u00E9.',
+        'srv.c2.title': 'Qualit\u00E9 garantie',
+        'srv.c2.desc': 'Nous garantissons la plus haute qualit\u00E9 dans le soin de votre cargaison.',
+        'srv.c3.title': 'Transport routier',
+        'srv.c3.desc': 'Nous prenons en charge votre marchandise en couvrant les impr\u00E9vus du trajet.',
+        'srv.c4.title': 'Chargement/d\u00E9chargement de palettes',
+        'srv.c4.desc': 'Nous g\u00E9rons le chargement et le d\u00E9chargement avec une garantie totale.',
+        'srv.c5.title': 'Stockage et distribution',
+        'srv.c5.desc': 'Nous stockons votre marchandise jusqu\'au moment optimal de distribution.',
+        'srv.c6.title': 'Suivi GPS',
+        'srv.c6.desc': 'Suivi en temps r\u00E9el de chaque camion. Acc\u00E8s en ligne pour le client.',
+        'work.eyebrow': 'Derniers travaux',
+        'work.title': 'Quelques-uns des travaux r\u00E9alis\u00E9s \u00E0 travers l\'Europe.',
+        'cargo.eyebrow': 'Ce que nous transportons',
+        'cargo.title': 'Marchandises g\u00E9n\u00E9rales et p\u00E9rissables partout en Europe.',
+        'cargo.t1': 'Produits manufactur\u00E9s', 'cargo.t2': 'Mati\u00E8res premi\u00E8res', 'cargo.t3': 'Produits laitiers', 'cargo.t4': 'Mat\u00E9riaux de construction',
+        'cargo.t5': 'Exp\u00E9ditions internationales', 'cargo.t6': 'Produits textiles', 'cargo.t7': 'Produits agricoles', 'cargo.t8': 'Produits m\u00E9tallurgiques',
+        'hist.eyebrow': 'Depuis 1960',
+        'hist.title': 'Trois g\u00E9n\u00E9rations sur la route.',
+        'hist.desc': 'Une entreprise jeune et dynamique avec une vaste exp\u00E9rience familiale qui remonte aux ann\u00E9es 60.',
+        'hist.m1.title': 'Le premier camion',
+        'hist.m1.desc': 'Salvador G\u00F3mez Cucarella commence avec un petit camion sur des itin\u00E9raires nationaux \u00E0 travers l\'Espagne, transportant toutes sortes de marchandises.',
+        'hist.m2.title': 'L\'aventure familiale',
+        'hist.m2.desc': '\u00D3scar G\u00F3mez Jim\u00E9nez rejoint son p\u00E8re. Ils acqui\u00E8rent leur premier v\u00E9hicule articul\u00E9 et commencent \u00E0 gagner du terrain avec un excellent service.',
+        'hist.m3.date': '10 janvier 2008',
+        'hist.m3.title': 'Naissance de Bontransport, S.L.',
+        'hist.m3.desc': 'Avec effort et sacrifice, l\'entreprise est formalis\u00E9e, couvrant de plus en plus de besoins clients tout en maintenant la dynamique familiale.',
+        'hist.m4.date': 'Aujourd\'hui',
+        'hist.m4.title': 'Toute l\'Europe et la Suisse',
+        'hist.m4.desc': 'Nous transportons des marchandises g\u00E9n\u00E9rales et p\u00E9rissables partout en Europe, nous consolidant comme r\u00E9f\u00E9rence en responsabilit\u00E9 et r\u00E9activit\u00E9.',
+        'motto.eyebrow': 'Nos devises',
+        'motto.quote': '\u00AB Un client satisfait est le r\u00E9sultat d\'un <span class="text-brand-accent">bon service de transport</span>. \u00BB',
+        'motto.sub': 'S\u00E9rieux, ponctualit\u00E9 et travail bien fait.',
+        'contact.eyebrow': 'Contact',
+        'contact.title': 'Une cargaison \u00E0 d\u00E9placer ?',
+        'contact.desc': 'Dites-nous ce dont vous avez besoin. Nous r\u00E9pondons en moins de 24 heures avec un devis personnalis\u00E9.',
+        'contact.phoneSub': 'Appelez \u00E0 toute heure',
+        'contact.mailSub': 'Toute question \u00E0 cette adresse',
+        'contact.follow': 'Suivez-nous',
+        'form.title': 'Prenez contact',
+        'form.name': 'Nom', 'form.namePh': 'Votre nom',
+        'form.email': 'Email',
+        'form.phone': 'T\u00E9l\u00E9phone',
+        'form.message': 'Message', 'form.messagePh': 'Dites-nous ce dont vous avez besoin...',
+        'form.send': 'Envoyer',
+        'footer.tagline': 'Transport international depuis Corbera, Valence. Depuis les ann\u00E9es 60.',
+        'footer.nav': 'Navigation',
+        'footer.home': 'Accueil',
+        'footer.social': 'R\u00E9seaux',
+        'footer.copy': '\u00A9 2026 Bontransport, S.L. Tous droits r\u00E9serv\u00E9s.',
+        'footer.subtag': 'Transport international depuis Valence',
+      }
+    };
+
+    function applyTranslations(lang) {
+      const dict = I18N[lang] || I18N.es;
+      // Text content
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      // HTML content (allows inline spans)
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+      // Placeholders
+      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+        const key = el.getAttribute('data-i18n-ph');
+        if (dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+      });
+      // Update <html lang>
+      document.documentElement.setAttribute('lang', lang);
+      // Update desktop language buttons state
+      document.querySelectorAll('.lang-btn').forEach(b => {
+        const isActive = b.getAttribute('data-lang') === lang;
+        if (window.scrollY > 60) {
+          b.classList.toggle('text-ink', isActive);
+          b.classList.toggle('text-slate-400', !isActive);
+          b.classList.remove('text-white', 'text-white/50');
+        } else {
+          b.classList.toggle('text-white', isActive);
+          b.classList.toggle('text-white/50', !isActive);
+          b.classList.remove('text-ink', 'text-slate-400');
+        }
+      });
+      // Update mobile buttons
+      document.querySelectorAll('.lang-btn-m').forEach(b => {
+        const isActive = b.getAttribute('data-lang') === lang;
+        b.classList.toggle('bg-white/10', isActive);
+        b.classList.toggle('text-white', isActive);
+        b.classList.toggle('text-white/50', !isActive);
+      });
+      localStorage.setItem('bontransport-lang', lang);
+    }
+
+    // Wire up language buttons
+    document.querySelectorAll('.lang-btn, .lang-btn-m').forEach(btn => {
+      btn.addEventListener('click', () => applyTranslations(btn.getAttribute('data-lang')));
+    });
+
+    // Initial language: saved preference, then browser, then ES
+    const saved = localStorage.getItem('bontransport-lang');
+    const browser = (navigator.language || 'es').slice(0, 2).toLowerCase();
+    const initialLang = saved || (I18N[browser] ? browser : 'es');
+    applyTranslations(initialLang);
+
     // Reveal on scroll
     const revealObs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
